@@ -61,11 +61,11 @@ function isValidateDateTime(dateTime){
  * (获取类)
  * 第一个参数n必填,表示获取日期的前n天或后n天
  * 第二个参数可选,表示给定日期,获取给定日期的前n天或后n天,否则获取为当前日期的前n天或后n天
- * n为正表示前n天 -n表示后n天
+ * n为正表示+n天 -n表示-n天
  */
 function getBeAfDateByDate(n){
     var dt =arguments[1]?new Date(arguments[1]):new Date();
-    dt.setDate(dt.getDate() - n);
+    dt.setDate(dt.getDate() - (-n));
     return dt.getFullYear()+'-'+(dt.getMonth()+1<10?'0'+(dt.getMonth()+1):(dt.getMonth()+1))+'-'+(dt.getDate()<10?'0'+dt.getDate():dt.getDate())
 }
 
@@ -74,11 +74,11 @@ function getBeAfDateByDate(n){
  * 第一个参数n必填,表示获取日期的前n月或后n月日期
  * 第二个参数可选,表示给定日期,获取给定日期的前n月或后n月,否则获取为当前日期的前n月或后n月日期
  * 传参获取n月前的日期 6为半年前 12为1年前
- * n为正表示前n月 -n表示后n月
+ * n为正表示+n月 -n表示-n月
  */
 function getBeAfDateByMonth(n){
     var dt =arguments[1]?new Date(arguments[1]): new Date();
-    dt.setMonth(dt.getMonth() - n);
+    dt.setMonth(dt.getMonth() - (-n));
     return dt.getFullYear()+'-'+(dt.getMonth()+1<10?'0'+(dt.getMonth()+1):(dt.getMonth()+1))+'-'+(dt.getDate()<10?'0'+dt.getDate():dt.getDate())
 }
 
