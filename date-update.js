@@ -5,18 +5,18 @@
  */
 
 /**
- * (检查验证类)
+ * (验证类)
  * 检查年份是否是闰年
- * 参数可选,表示检查给定的日期是否闰年
- * 不传参默认检查当前年份是否闰年
+ * 参数可选,表示检查给定的年份
+ * 不传参默认检查当前年份
  */
 function isLeapYear(){
-	var y=arguments[0]?arguments[0]:new Date();
-	return y.getFullYear()%4===0&&y.getFullYear()%100!==0 || y.getFullYear()%400===0
+    var y=arguments[0]?arguments[0]:new Date().getFullYear();
+    return y%4===0&&y%100!==0 || y%400===0
 }
 
 /**
- * (检查验证类)
+ * (验证类)
  * 只验证年月日是否合法
  * 参数一个,表示给定验证的日期
  * 验证日期
@@ -29,7 +29,7 @@ function isValidDate(date){
 } 
 
 /**
- * (检查验证类)
+ * (验证类)
  * 只验证时分秒是否合法
  * 参数一个,表示给定验证的时分秒
  * 验证时间
@@ -42,7 +42,7 @@ function isValidTime(time){
 }
 
 /**
- * (检查验证类)
+ * (验证类)
  * 检查验证完整日期 年月日时分秒格式是否合法
  * 参数一个,表示给定验证的年月日时分秒
  * 验证日期时间格式
@@ -157,9 +157,14 @@ function getWeekByDate(n){
  * 任意给一个日期，获取这个日期所在的月份有多少天
  */
 function getMaxDayOfDate(date){
-	var t=date.split(/[/-]/).splice(0,2);
-	var d=t[0]+'-'+(t[1]-0+1)+'-01';
-	return getDateByDate(1,d).split('-')[2]
+    if(date){
+        var t=date.split(' ')[0].split(/[\_./-]/,2);
+        var d=t[0]+'-'+((t[1]-0+1)<10?'0'+(t[1]-0+1):(t[1]-0+1))+'-01';
+        return getBeAfDateByDate(1,d).split('-')[2]   
+    }else{
+        var t=new Date().getFullYear()+'-'+((new Date().getMonth()+1)<10?'0'+(new Date().getMonth()+1):(new Date().getMonth()+1))+'-01';
+        return getBeAfDateByDate(1,t).split('-')[2]
+    }
 }
 
 
@@ -182,11 +187,24 @@ function getDaysByStamps(stamp1,stamp2){
 	return parseInt(Math.abs(stamp1-stamp2)/1000/60/60/24)
 }
 
-/* (获取类)
- * 获取两个日期相差多少天
- */
-function getDaysByDates(date1,date2){
-	return parseInt(Math.abs(new Date(date1)-new Date(date2))/1000/60/60/24)
+/**
+ * 
+ * (获取类)
+ * 日期天数差  参数格式:年月日
+ * 第一个参数：开始日期 必填项
+ * 第二个参数可选，填写则表示给定结束日期，不填写结束日期默认为当前日期
+ */	
+function getDateDiff(){
+	if(arguments.length===1){//相对于当前日期
+		var e=arguments[0].split(' ')[1]?arguments[0]:arguments[0]+' 00:00:00';
+		return parseInt(Math.abs(new Date(d).getTime() - new Date(e).getTime())/1000/24/60/60)
+	}else if(arguments.length===2){//比较两个指定日期
+		var s=arguments[0].split(' ')[1]?arguments[0]:arguments[0]+' 00:00:00';
+		var e=arguments[1].split(' ')[1]?arguments[1]:arguments[1]+' 00:00:00';
+		return parseInt(Math.abs(new Date(s).getTime() - new Date(e).getTime())/1000/24/60/60)
+	}else{
+		return ''
+	}
 }
 
 
@@ -207,26 +225,7 @@ function getAllDatesBetween(startDate,endDate){
     return arr
 }
 
-/**
- * 
- * 
- * (获取类)
- * 日期天数差  参数格式:年月日
- * 第一个参数：开始日期 必填项
- * 第二个参数可选，填写则表示给定结束日期，不填写结束日期默认为当前日期
- */	
-function getDateDiff(){
-	if(arguments.length===1){//相对于当前日期
-		var e=arguments[0].split(' ')[1]?arguments[0]:arguments[0]+' 00:00:00';
-		return parseInt(Math.abs(new Date(d).getTime() - new Date(e).getTime())/1000/24/60/60)
-	}else if(arguments.length===2){//比较两个指定日期
-		var s=arguments[0].split(' ')[1]?arguments[0]:arguments[0]+' 00:00:00';
-		var e=arguments[1].split(' ')[1]?arguments[1]:arguments[1]+' 00:00:00';
-		return parseInt(Math.abs(new Date(s).getTime() - new Date(e).getTime())/1000/24/60/60)
-	}else{
-		return ''
-	}
-}
+
 
 /*
 * (获取类)
@@ -307,7 +306,6 @@ function dateToStandard(){
 /**
  * (工具类)
  * 日期加减
- * 
  * 相对当前日期进行加减
  * 相对给定日期进行加减
  * 参数 n 必填项
