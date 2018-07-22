@@ -1,5 +1,5 @@
 /*
- * Date.js v1.0.0
+ * date-common.js v1.0.0
  * Anthor  Shu Fei
  * update Date:2018-07-21
  */
