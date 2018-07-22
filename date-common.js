@@ -121,37 +121,38 @@ function getWeekByDate(n){
 	}else if(i===1){
 		switch(n){
 			case 2:
-			return getBeAfDateByDate(-1)
+			return arguments[1]?getBeAfDateByDate(-1,arguments[1]):getBeAfDateByDate(-1)
 			case 3:
-			return getBeAfDateByDate(-2)
+			return arguments[1]?getBeAfDateByDate(-2,arguments[1]):getBeAfDateByDate(-2)
 			case 4:
-			return getBeAfDateByDate(-3)
+			return arguments[1]?getBeAfDateByDate(-3,arguments[1]):getBeAfDateByDate(-3)
 			case 5:
-			return getBeAfDateByDate(-4)
+			return arguments[1]?getBeAfDateByDate(-4,arguments[1]):getBeAfDateByDate(-4)
 			case 6:
-			return getBeAfDateByDate(-5)
+			return arguments[1]?getBeAfDateByDate(-5,arguments[1]):getBeAfDateByDate(-5)
 			case 0:
-			return getBeAfDateByDate(-6)
+			return arguments[1]?getBeAfDateByDate(-6,arguments[1]):getBeAfDateByDate(-6)
 		}
 	}else{
 		switch(n){
 			case 1:
-			return getBeAfDateByDate(1-i)
+			return arguments[1]?getBeAfDateByDate(1-i,arguments[1]):getBeAfDateByDate(1-i)
 			case 2:
-			return getBeAfDateByDate(2-i)
+			return arguments[1]?getBeAfDateByDate(1-i,arguments[1]):getBeAfDateByDate(2-i)
 			case 3:
-			return getBeAfDateByDate(3-i)
+			return arguments[1]?getBeAfDateByDate(1-i,arguments[1]):getBeAfDateByDate(3-i)
 			case 4:
-			return getBeAfDateByDate(4-i)
+			return arguments[1]?getBeAfDateByDate(1-i,arguments[1]):getBeAfDateByDate(4-i)
 			case 5:
-			return getBeAfDateByDate(5-i)
+			return arguments[1]?getBeAfDateByDate(1-i,arguments[1]):getBeAfDateByDate(5-i)
 			case 6:
-			return getBeAfDateByDate(6-i)
+			return arguments[1]?getBeAfDateByDate(1-i,arguments[1]):getBeAfDateByDate(6-i)
 			case 0:
-			return getBeAfDateByDate(7-i)
+			return arguments[1]?getBeAfDateByDate(1-i,arguments[1]):getBeAfDateByDate(7-i)
 		}
 	}
 }
+
 
 /* (获取类)
  * 任意给一个日期，获取这个日期所在的月份有多少天
@@ -237,30 +238,24 @@ function getAllDatesBetween(startDate,endDate){
 */
 function getDatePart(name){
 	var t=arguments[1]?new Date(arguments[1]):new Date();
-	var y=t.getFullYear()
-	var M=t.getMonth()+1
-	var d=t.getDate()
-	var h=t.getHours()
-	var s=t.getMinutes()
-	var m=t.getSeconds()
 	switch(name) {
 		case 'y':
-		return y;
+		return t.getFullYear();
 		break;
 		case 'M':
-		return M;
+		return t.getMonth()+1;
 		break;
 		case 'd':
-		return d;
+		return t.getDate();
 		break;
 		case 'h':
-		return h;
+		return t.getHours();
 		break;
 		case 's':
-		return s;
+		return t.getMinutes();
 		break;
 		case 'm':
-		return m;
+		return t.getSeconds();
 		break;
 		default:
 		return '';
@@ -315,7 +310,7 @@ function dateToStandard(){
  */
 
 function datePlusMinus(n){
-	var t=arguments[1]?new Date(arguments[1]).getTime():d.getTime();
+	var t=arguments[1]?new Date(arguments[1]).getTime():new Date().getTime();
 	var date=new Date(t+n*86400000);
 	var y=date.getFullYear(); 
 	var MM=date.getMonth()+1; 
@@ -365,7 +360,7 @@ function dateFormat(format){
  * 没有参数,默认格式化当前日期时间
  */ 
 function dateToString(){
-	var now=arguments[0]? new Date(arguments[0]):d
+	var now=arguments[0]? new Date(arguments[0]):new Date()
 	var y=now.getFullYear(); 
 	var m=now.getMonth()+1; 
 	var d=now.getDate(); 
