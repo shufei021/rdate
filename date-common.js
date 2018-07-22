@@ -1,5 +1,5 @@
 /*
- * date-common.js v1.0.0
+ * Date.js v1.0.0
  * Anthor  Shu Fei
  * update Date:2018-07-21
  */
@@ -11,7 +11,7 @@
  * 不传参默认检查当前年份
  */
 function isLeapYear(){
-    var y=arguments[0]?arguments[0]:new Date().getFullYear();
+    var y=arguments[0]?arguments[0].split(' ')[0].split(/[\_./-]/)[0]:new Date().getFullYear();
     return y%4===0&&y%100!==0 || y%400===0
 }
 
@@ -47,13 +47,16 @@ function isValidTime(time){
  * 参数一个,表示给定验证的年月日时分秒
  * 验证日期时间格式
  */
+
 function isValidateDateTime(dateTime){
  	var a=dateTime.split(' ');
  	var f=a[0].split(/[\_./-]/);
  	var s=a[1].split(':');
  	var zf=f[0]+'-'+(f[1].length<2?'0'+f[1]:f[1])+'-'+(f[2].length<2?'0'+f[2]:f[2]);
  	var zs=s[0]+':'+(s[1].length<2?'0'+s[1]:s[1])+':'+(s[2].length<2?'0'+s[2]:s[2]);
- 	return isValidDate(zf)&&isValidTime(zs)
+ 	var regDate=/(([0-9]{3}[1-9]|[0-9]{2}[1-9][0-9]{1}|[0-9]{1}[1-9][0-9]{2}|[1-9][0-9]{3})-(((0[13578]|1[02])-(0[1-9]|[12][0-9]|3[01]))|((0[469]|11)-(0[1-9]|[12][0-9]|30))|(02-(0[1-9]|[1][0-9]|2[0-8]))))|((([0-9]{2})(0[48]|[2468][048]|[13579][26])|((0[48]|[2468][048]|[3579][26])00))-02-29)/;
+ 	var regTime=/^[0-2][0-3]:[0-5][0-9]:[0-5][0-9]$/;
+ 	return regDate.test(zf)&&regTime.test(zs)
 }
 
 
@@ -99,86 +102,47 @@ function getWeek(){
  * 第二参数可选,表示给定日期,不填写默认为当前日期
  * 获取当前日期或给定日期所在周,给定一个星期n,返回对应的日期
  */
-function getWeekByDate(n){
-	var i=arguments[1]?new Date(arguments[1]).getDay():new Date().getDay()
-	if(i===n){
-		return arguments[1]?dateToStandard(arguments[1]).split(' ')[0]:dateFormat('yyyy-MM-dd',new Date())
-	}else if(i===0){
-		switch(n){
-			case 1:
-			return arguments[1]?getBeAfDateByDate(-6,arguments[1]):getBeAfDateByDate(-6)
-			case 2:
-			return arguments[1]?getBeAfDateByDate(-5,arguments[1]):getBeAfDateByDate(-5)
-			case 3:
-			return arguments[1]?getBeAfDateByDate(-4,arguments[1]):getBeAfDateByDate(-4)
-			case 4:
-			return arguments[1]?getBeAfDateByDate(-3,arguments[1]):getBeAfDateByDate(-3)
-			case 5:
-			return arguments[1]?getBeAfDateByDate(-2,arguments[1]):getBeAfDateByDate(-2)
-			case 6:
-			return arguments[1]?getBeAfDateByDate(-1,arguments[1]):getBeAfDateByDate(-1)
-		}
-	}else if(i===1){
-		switch(n){
-			case 2:
-			return arguments[1]?getBeAfDateByDate(-1,arguments[1]):getBeAfDateByDate(-1)
-			case 3:
-			return arguments[1]?getBeAfDateByDate(-2,arguments[1]):getBeAfDateByDate(-2)
-			case 4:
-			return arguments[1]?getBeAfDateByDate(-3,arguments[1]):getBeAfDateByDate(-3)
-			case 5:
-			return arguments[1]?getBeAfDateByDate(-4,arguments[1]):getBeAfDateByDate(-4)
-			case 6:
-			return arguments[1]?getBeAfDateByDate(-5,arguments[1]):getBeAfDateByDate(-5)
-			case 0:
-			return arguments[1]?getBeAfDateByDate(-6,arguments[1]):getBeAfDateByDate(-6)
-		}
-	}else{
-		switch(n){
-			case 1:
-			return arguments[1]?getBeAfDateByDate(1-i,arguments[1]):getBeAfDateByDate(1-i)
-			case 2:
-			return arguments[1]?getBeAfDateByDate(1-i,arguments[1]):getBeAfDateByDate(2-i)
-			case 3:
-			return arguments[1]?getBeAfDateByDate(1-i,arguments[1]):getBeAfDateByDate(3-i)
-			case 4:
-			return arguments[1]?getBeAfDateByDate(1-i,arguments[1]):getBeAfDateByDate(4-i)
-			case 5:
-			return arguments[1]?getBeAfDateByDate(1-i,arguments[1]):getBeAfDateByDate(5-i)
-			case 6:
-			return arguments[1]?getBeAfDateByDate(1-i,arguments[1]):getBeAfDateByDate(6-i)
-			case 0:
-			return arguments[1]?getBeAfDateByDate(1-i,arguments[1]):getBeAfDateByDate(7-i)
-		}
-	}
+function getWeekByDate(week){
+	var t=arguments[1]?new Date(arguments[1]):new Date()
+	var i=t.getDay()==0?7:t.getDay();
+	var week=week==0?7:week;
+	return i==week?t:(function(){t.setDate(t.getDate() -(i-week));return t})()
 }
 
 
 /* (获取类)
  * 任意给一个日期，获取这个日期所在的月份有多少天
  */
-function getMaxDayOfDate(date){
-    if(date){
-        var t=date.split(' ')[0].split(/[\_./-]/,2);
-        var d=t[0]+'-'+((t[1]-0+1)<10?'0'+(t[1]-0+1):(t[1]-0+1))+'-01';
-        return getBeAfDateByDate(1,d).split('-')[2]   
-    }else{
-        var t=new Date().getFullYear()+'-'+((new Date().getMonth()+1)<10?'0'+(new Date().getMonth()+1):(new Date().getMonth()+1))+'-01';
-        return getBeAfDateByDate(1,t).split('-')[2]
-    }
+
+function getMaxDayOfDate(){
+    var dt=arguments[0]?new Date(arguments[0]):new Date()
+    dt.setMonth(dt.getMonth() + 1)
+    dt.setDate(1)
+    dt.setDate(dt.getDate() -1)
+    return dt.getDate() 
 }
 
 
 /* (获取类)
- * 获取日期所在年的第几周
- * 
+ * 不传日期,则获取当前日期所在年的第几周
+ * 传参则获取给定日期所在年的周数
  */
-function getWeekNumOfYear(date){
-	var date2=date;
-	var y=date.split(/[/-]/)[0]-0;
-	var m=date.split(/[/-]/)[1]-0;
-	var date1=y+'-'+(m<10?'0'+m:m)+'-01';
-	return Math.ceil((getDateDiff(date1,date2)+1)/7);
+function getWeekNumOfYear(){
+	if(arguments[0]){
+		var eStamp=new Date(arguments[0]).getTime();
+		var dt=new Date(arguments[0]);
+		dt.setMonth(0)
+		dt.setDate(1)
+		var sStamp=dt.getTime()
+		return Math.ceil(((eStamp-sStamp)/1000/24/60/60 + 1)/7)
+	}else{
+		var dt=new Date();
+		var eStamp=new Date(dt).getTime();
+		dt.setMonth(0)
+		dt.setDate(1)
+		var sStamp=dt.getTime()
+		return Math.ceil((eStamp-sStamp)/1000/24/60/60/7)
+	}
 }
 
 /* (获取类)
@@ -236,25 +200,25 @@ function getAllDatesBetween(startDate,endDate){
 * 第一个参数为日期部分信息的名字必填项
 * 第二个参数可选,表示给定时间戳,获取时间戳转成日期的信息
 */
-function getDatePart(name){
+function getDatePart(typeName){
 	var t=arguments[1]?new Date(arguments[1]):new Date();
-	switch(name) {
-		case 'y':
+	switch(typeName) {
+		case '年':
 		return t.getFullYear();
 		break;
-		case 'M':
+		case '月':
 		return t.getMonth()+1;
 		break;
-		case 'd':
+		case '日':
 		return t.getDate();
 		break;
-		case 'h':
+		case '时':
 		return t.getHours();
 		break;
-		case 's':
+		case '分':
 		return t.getMinutes();
 		break;
-		case 'm':
+		case '秒':
 		return t.getSeconds();
 		break;
 		default:
@@ -287,20 +251,26 @@ function dateToArray(){
  * 日期格式化成标准的2位
  * 第一个参数必填,适合日期部分 . _ / - 日期合法 没有补零
  */
+
 function dateToStandard(){
-	var at=arguments[0].split(' ');
-	var f=at[0].split(/[\_./-]/);
-	if(at[1]){
-		var s=at[1].split(':');
+	if(arguments[0]){
+		var t=arguments[0].split(' ');
+	}else{
+		var dt=new Date();
+		var t=[dt.getFullYear()+'-'+(dt.getMonth()+1)+'-'+dt.getDate(),dt.getHours()+':'+dt.getMinutes()+':'+dt.getSeconds()]
+	}
+	var f=t[0].split(/[\_./-]/);
+	if(t[1]){
+		var s=t[1].split(':');
 		return f[0]+'-'+(f[1].length<2?'0'+f[1]:f[1])+'-'+(f[2].length<2?'0'+f[2]:f[2])+' '+(s[0].length<2?'0'+s[0]:s[0])+':'+(s[1].length<2?'0'+s[1]:s[1])+':'+(s[2].length<2?'0'+s[2]:s[2])
 	}else{
-		return f[0]+'-'+(f[1].length<2?'0'+f[1]:f[1])+'-'+(f[2].length<2?'0'+f[2]:f[2])
+		return f[0]+'-'+(f[1].length<2?'0'+f[1]:f[1])+'-'+(f[2].length<2?'0'+f[2]:f[2])+' 00:00:00'
 	}
 }
 
 /**
  * (工具类)
- * 日期加减
+ * 年月日时分秒格式日期加减
  * 相对当前日期进行加减
  * 相对给定日期进行加减
  * 参数 n 必填项
@@ -369,3 +339,4 @@ function dateToString(){
 	var ss=now.getSeconds(); 
 	return y+'-'+(m<10?'0'+m:m)+'-'+(d<10?'0'+d:d)+' '+(hh<10?'0'+hh:hh)+':'+(mm<10?'0'+mm:mm)+':'+(ss<10?'0'+ss:ss);
 }
+
