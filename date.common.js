@@ -312,7 +312,7 @@ function dateFormat(format){
 	  "S+": t.getMilliseconds()
 	};
 	if (/(y+)/i.test(format)) {
-	    format = format.replace(RegExp.$1, (d.getFullYear() + '').substr(4 - RegExp.$1.length));
+	    format = format.replace(RegExp.$1, (t.getFullYear() + '').substr(4 - RegExp.$1.length));
 	}
 	for (var k in date) {
 		if (new RegExp("(" + k + ")").test(format)) {
