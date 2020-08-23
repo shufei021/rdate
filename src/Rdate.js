@@ -4,7 +4,7 @@ class Rdate {
         this.author = 'rookie_fly'
         this.creator ='rookie_fly'
         this.createDate ='2018-07-27'
-        this.updateDate = '2020-08-22'
+        this.updateDate = '2020-08-23'
     }
 
     /**
@@ -14,7 +14,7 @@ class Rdate {
      */
 
      /**
-      * ※ 完结：不会再改
+      * ※ 
       * @param  {...any} args :形参，生效的最多为前两个参数
       * 1个参数情况：
       *      1.1 参数为格式，则默认格式化当前时间
@@ -46,18 +46,45 @@ class Rdate {
             "d+": String(dt.getDate()).padStart(2, 0),
             "h+": String(dt.getHours()).padStart(2, 0),
             "m+": String(dt.getMinutes()).padStart(2, 0),
-            "s+": String(dt.getSeconds()).padStart(2, 0),
+            "s+": String(dt.getSeconds()).padStart(2, 0)
         }
+         // 模板内容base64加密
+         format = format.replace(new RegExp(/\[(.+?)\]/g),function(a) {
+            return '[' +window.btoa(a.slice(1,-1))+ ']'
+        })
+
+
+        /**
+         * 星期替换
+         */
+        if(format.includes('w')){
+            format = format.replace(/((w)+)/g, () => this.week(dt))
+        }
+        /**
+         * 时辰替换
+         */
+        if(format.includes('t')){
+            format = format.replace(/((t)+)/g, () => this.when(dt))
+            
+        }
+       
+
         for (let k in ret) {
             if (format.includes(k.substr(0, 1))) {
-                format = format.replace(new RegExp(k, "g"), i => ret[k].substr(0, i.length))
+                format = format.replace(new RegExp(k, "g"), function(a,b,c){
+                    return Rdate.isMatch(format,b) ? a : ret[k].substr(0, a.length)
+                })
             }
         }
+        // 模板字符串处理
+        format = format.replace(new RegExp(/\[(.+?)\]/g), function(a,b,c){
+             return window.atob(a.slice(1,-1))
+        })
         return format
     }
 
     /**
-     * ※ 完结：不会再改
+     * ※ 
      * Rdate 的静态方法
      * 用于 根据参数获取时间 的兼容：输入日期
      * 第1种情况：用户没有传参数，即 dt === undefined，此时返回当前日期时间
@@ -66,6 +93,32 @@ class Rdate {
      */
     static _dt(dt){
         return dt?new Date(typeof dt == 'string' && dt.indexOf('-')>-1?dt.replace(/-/g,'/'):dt):new Date()
+    }
+
+    /**
+     * 前后 中括号是否配对
+     * @param { String } str : 带 中括号的字符串
+     * @param { Number } index ：查找开始的索引
+     */
+    static isMatch(str,index){
+        // 往后查找 ]
+        let index1 = str.indexOf('[',index)
+        let index2 = str.indexOf(']',index)//肯定不能为 -1
+        // 往前查找 [
+        let index3 = str.lastIndexOf('[',index)//肯定不能为 -1
+        let index4 = str.lastIndexOf(']',index)
+        if(index2>-1 && index3>-1){
+            if(index1==-1 && index4==-1){
+                return true
+            }else{
+                if(index1>-1 &&  index4==-1){
+                    return index3<index4
+                }else {
+                    return  index2<index1
+                }
+            }
+        }
+        return  false
     }
 
 
@@ -85,7 +138,7 @@ class Rdate {
       */
 
     /**
-     * ※ 完结：不会再改
+     * ※ 
      * 获取 （给定日期 | 当前日期） 前进（+）后退（-）n 天后的时间戳
      * @param { Number } n : 前进（+）后退（-）n 天后的时间戳，不传默认是0，当天
      * @param { String } dt : 给定日期
@@ -106,7 +159,7 @@ class Rdate {
 
 
     /**
-     * ※ 完结：不会再改
+     * ※ 
      * 获取基于 （给定日期/当前时间） 的 前一天/后一天的时间戳
      * @param  { String } dt : 给定日期
      */
@@ -121,7 +174,7 @@ class Rdate {
 
 
     /**
-     * ※ 完结：不会再改
+     * ※ 
      * 定日期/今日 起止日期时间（00：00：00 ~ 23：59：59）
      * @param { String } dt: 给定日期
      */
@@ -135,7 +188,7 @@ class Rdate {
 
 
     /**
-     * ※ 完结：不会再改
+     * ※ 
      * 获取两个时间戳相差多少天
      * @param { Number } stamp1 ：时间戳
      * @param { Number } stamp2 ：时间戳
@@ -154,7 +207,7 @@ class Rdate {
       */
 
     /**
-     * ※ 完结：不会再改
+     * ※ 
      * 本周第一天
      * @param { String } format ：格式，默认 yyyy-MM-dd
      */
@@ -166,7 +219,7 @@ class Rdate {
 
 
      /**
-      * ※ 完结：不会再改
+      * ※ 
      * 本周最后一天
      */
     getCurWeekLastDay() {
@@ -177,7 +230,7 @@ class Rdate {
 
 
     /**
-     * ※ 完结：不会再改
+     * ※ 
      * 任一月份第一天
      */
     getMonthFirstDay(dt) {
@@ -186,7 +239,7 @@ class Rdate {
     }
 
     /**
-     * ※ 完结：不会再改
+     * ※ 
      * 任一月份最后一天
      * @param { String | Number} dt ：日期 或 时间戳
      */
@@ -200,7 +253,7 @@ class Rdate {
 
 
     /**
-     * ※ 完结：不会再改
+     * ※ 
      * 获取两个日期相差多少天
      * @param {String | Number} d1 ：日期 或 时间戳
      * @param {String | Number} d2 ：日期 或 时间戳
@@ -211,7 +264,7 @@ class Rdate {
 
 
     /**
-     * ※ 完结：不会再改
+     * ※ 
      * 获取 （给定日期 | 当前日期）为基准的 半年之前的日期
      * @param { String | Number } dt ：日期 或 时间戳
      */
@@ -222,7 +275,7 @@ class Rdate {
 
 
     /**
-     * ※ 完结：不会再改
+     * ※ 
      * 距 （给定日期|当前日期） n 年 的日期
      * @param { Number } n ：前进（+） 后退（-）n 年后的日期
      * @param { String | Number } dt ：日期 或 时间戳
@@ -294,6 +347,26 @@ class Rdate {
         return Math.ceil((d + ((d2.getDay() + 1) - 1)) / 7);
     }
 
+    /**
+     * 获取 （给定日期 | 当前日期） 对应的回显星期
+     * @param {String | Number } dt ：日期 或 时间戳
+     * @param {String} prefix :前缀
+     */
+    week(dt=new Date(),prefix='星期'){
+        let d = Rdate._dt(dt)
+        return prefix+['日','一','二','三','四','五','六'][d.getDay()]
+    }
+
+
+    /**
+     * 获取 （给定日期 | 当前日期） 对应的回显月份
+     * @param {String | Number } dt ：日期 或 时间戳
+     * @param {String} suffix ：后缀
+     */
+    month(dt=new Date(),suffix='月'){
+        let d = Rdate._dt(dt)
+        return ['一','二','三','四','五','六','七','八','九','十','十一','十二'][d.getMonth()] + suffix
+    }
 
     /**
      * 获取 (给定日期 | 当前日期) 在对应的年份 | 月份 | 季度 中属于的第几周
@@ -368,19 +441,6 @@ class Rdate {
         let end = this.format(dd,"yyyy-MM-dd")
         return {start,end}
     }
-
-     /**
-     * 
-     * @param {String | Number} startDate : 开始的日期 （日期 或 时间戳）
-     * @param {String | Number} endDate : 结束的日期 （日期 或 时间戳）
-     */
-    getDiffDate(startDate,endDate){
-        if(!startDate)return this.format('yyyy-MM-dd')
-        let end = endDate || this.format('yyyy-MM-dd')
-        let diff = parseInt(Math.abs(new Date(startDate.split(' ')[0]+' 00:00:00') - new Date(end.split(' ')[0]+' 00:00:00'))/1000/24/60/60)+1
-        return Array(diff).fill(0).reduce((p,c,i)=>[...p,this.format(this.getStamp(startDate)+i*86400000,'yyyy-MM-dd')],[])
-    }
-
 
     /**
      * 星期回显
@@ -500,8 +560,65 @@ class Rdate {
      /**
      * --------------验证相关-------------------end----------------------------------------------
      */
+
+
+     /**
+      * 新增 方法-----------------------------------------------------------------------
+      */
+
+    /**
+     * 计算两个日期间所有日期，以数组形式返回
+     * 新增时间：2020/8/23
+     * @param { string | number } startDate : 开始日期（13位时间戳 | 字符串日期）
+     * @param { string | number } endDate ：结束日期（13位时间戳 | 字符串日期）
+     * @return 日期间所有日期，以数组形式返回
+     */
+    getGapDates(startDate,endDate){
+        // 如果开始日期都没有，直接返回 []
+        if(!startDate)return []
+        // 辅助函数
+        let helper = (s,i) => new Date((+new Date(s)+ i*86400000)).toLocaleDateString().replace(/\//g,'-')
+        // 开始日期时间戳
+        let startDateStamp = +new Date(new Date(startDate).toLocaleDateString())
+        // 结束日期时间戳
+        let endDateStamp = endDate? +new Date(new Date(endDate).toLocaleDateString()) : +new Date(new Date().toLocaleDateString())
+        // 如果两者相等
+        if(startDateStamp===endDateStamp)return [ helper(new Date(endDate?new Date():startDate),0) ]
+        // 获取最小的日期作为开始日期
+        startDate = startDateStamp<endDateStamp?new Date(startDateStamp):new Date(endDate?endDateStamp:+new Date())
+        // 获取最大的日期作为结束日期
+        endDate= startDateStamp<endDateStamp?new Date(endDate?endDateStamp :+new Date()):new Date(startDateStamp)
+        // 计算相差天数
+        let gapDays = parseInt(Math.abs(startDateStamp - endDateStamp) / 86400000) +1
+        // 返回结果
+        return Array(gapDays).fill(0).reduce((p,c,i)=>[...p,helper(startDate,i)],[])
+    } 
+
+
+     /**
+      * 计算 当前时辰 或 指定时间 （年月日时分秒）
+      * 
+      * 凌晨0：00－6：00，
+      * 早上 6：00-8:00；
+      * 上午 8：00-12：00，上午是指8-12点工作时间
+      * 中午12：00-14：00,中午是指12-14点午休时间
+      * 下午14：00-18：00，下午是指14-18点下午工作时间
+      * 晚上18：00-21：00；
+      * 深夜：21：00-24：00
+      *
+      * @param { string | number } dt ：指定时间
+      */
+    when(dt) {
+        let hour = Rdate._dt(dt).getHours()
+        return ['凌晨', '早上', '上午', '中午', '下午', '晚上', '深夜'][
+            hour >= 0 && hour <= 6 ? 0 :
+            hour > 6 && hour <= 8 ? 1 :
+            hour > 8 && hour <= 12 ? 2 :
+            hour > 12 && hour <= 14 ? 3 :
+            hour > 14 && hour <= 18 ? 4 :
+            hour > 18 && hour <= 21 ? 5 :6
+        ]
+    }
 }
 
-const rdate = new Rdate()
-
-export default rdate
+export default Rdate
