@@ -96,26 +96,32 @@
           args[_key] = arguments[_key];
         }
 
+        // 解构参数，声明格式
         var a = args[0],
             b = args[1],
             dt,
-            format;
+            format; // 如果没有传入参数，时间默认是当前时间，格式是默认格式
 
         if (!args.length) {
           dt = new Date();
           format = 'yyyy-MM-dd hh:mm:ss';
         } else if (args.length == 1) {
+          //如果只传入一个参数的情况，分两种情况进行检测
           if (isNaN(new Date(a).valueOf())) {
+            //第一种情况：输入的是格式字符串，格式则使用传入的第一个参数作为格式，时间为默认时间
             format = a;
             dt = new Date();
           } else {
+            //第二种情况：输入的时间字符串 或 时间戳，可以被解析，则时间就使用传入的第一个参数作为时间，格式使用默认格式
             dt = new Date(typeof a == 'string' ? a.replace(/-/g, '/') : a);
             format = 'yyyy-MM-dd hh:mm:ss';
           }
         } else if (args.length >= 2) {
+          //参数大于等于2时，第一个参数赋予时间，第二个参数赋予格式
           dt = new Date(typeof a == 'string' ? a.replace(/-/g, '/') : a);
           format = b;
-        }
+        } // 时间补位对象
+
 
         var ret = {
           "y+": String(dt.getFullYear()),
@@ -124,10 +130,15 @@
           "h+": String(dt.getHours()).padStart(2, 0),
           "m+": String(dt.getMinutes()).padStart(2, 0),
           "s+": String(dt.getSeconds()).padStart(2, 0)
-        }; // 模板内容base64加密
+        };
+        /**
+         * 标记并缓存模板内容
+         */
 
-        format = format.replace(new RegExp(/\[(.+?)\]/g), function (a) {
-          return '[' + window.btoa(a.slice(1, -1)) + ']';
+        var mapVal = [];
+        format = format.replace(/\[(.+?)\]/g, function (a) {
+          mapVal.push(a.slice(1, -1));
+          return "|";
         });
         /**
          * 星期替换
@@ -148,24 +159,44 @@
             return _this.when(dt);
           });
         }
+        /**
+         * 开始进行正常的时间格式替换
+         */
+
 
         var _loop = function _loop(k) {
           if (format.includes(k.substr(0, 1))) {
-            format = format.replace(new RegExp(k, "g"), function (a, b, c) {
-              return Rdate.isMatch(format, b) ? a : ret[k].substr(0, a.length);
+            format = format.replace(new RegExp(k, "g"), function (a) {
+              return ret[k].substr(0, a.length);
             });
           }
         };
 
         for (var k in ret) {
           _loop(k);
-        } // 模板字符串处理
+        }
+        /**
+         * 模板字符串处理
+         */
 
 
-        format = format.replace(new RegExp(/\[(.+?)\]/g), function (a, b, c) {
-          return window.atob(a.slice(1, -1));
-        });
-        return format;
+        var formatArr = format.split('|');
+        var res = '';
+
+        for (var i = 0; i < formatArr.length; i++) {
+          res += formatArr[i] + mapVal[i];
+        }
+        /** 
+         * 处理特殊情况
+        */
+
+
+        if ((res + ' ').slice(-10, -1) === 'undefined' && formatArr[formatArr.length - 1] !== '|') {
+          res = res.slice(0, -9);
+        } // 返回处理的结果
+
+
+        return res;
       }
       /**
        * ※ 
