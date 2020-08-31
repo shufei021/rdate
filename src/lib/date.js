@@ -279,6 +279,7 @@ export const getGapDate = function (n = 0, dt = new Date(), ft) {
  * @param { String | Number } dt ：日期 或 时间戳
  * @param { String } ft ：格式
  */
+<<<<<<< HEAD
 export const getWeekWorkday = function (dt = new Date(), ft = 'yyyy-MM-dd') {
     let d = new Date(dt)
     let w = d.getDay() == 0 ? 7 : d.getDay()
@@ -290,6 +291,16 @@ export const getWeekWorkday = function (dt = new Date(), ft = 'yyyy-MM-dd') {
         first,
         last
     }
+=======
+export const getWeekWorkday = function(dt = new Date(),ft='yyyy-MM-dd'){
+    let d= new Date(dt)
+    let w = d.getDay()==0?7:d.getDay()
+    d.setDate(d.getDate()-w+1)
+    let first = format(d,ft)
+    d.setDate(d.getDate()+4)
+    let last = format(d,ft)
+    return {first,last}
+>>>>>>> c6e95249dc40181b99a6808a9209c563edac171e
 }
 
 /**
@@ -433,6 +444,7 @@ export const getQuarterWeek = function (dt) {
         return week
     }
 }
+<<<<<<< HEAD
 
 /**
  * 生成 基于当前 / 指定时间的 过去 n 天时间（包含当天日期）
@@ -489,3 +501,5 @@ export const previewMoment = function(dt) {
             isYesterday(_dt(dt)) ? "昨天" :
             year(_dt(dt)) === year() ? format(_dt(dt), "M月d日") : format(_dt(dt), "YYYY/MM/dd")
 }
+=======
+>>>>>>> c6e95249dc40181b99a6808a9209c563edac171e
