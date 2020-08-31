@@ -1,7 +1,7 @@
 
 # Rdate
 
-> Rdate 日期时间库，封装了项目中使用频率比较高的方法
+> Rdate 是一款使用JavaScript语言编写的日期时间工具函数类库，具有良好的扩展性、易用性、复用性。
 
 [Rdate 文档](http://moxiaofei.com/rdate/)
 
