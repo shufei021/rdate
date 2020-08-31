@@ -273,7 +273,7 @@ export const getGapDate = function (n = 0, dt = new Date(),ft) {
  */
 export const getWeekWorkday = function(dt = new Date(),ft='yyyy-MM-dd'){
     let d= new Date(dt)
-    let w = d.getDay()
+    let w = d.getDay()==0?7:d.getDay()
     d.setDate(d.getDate()-w+1)
     let first = format(d,ft)
     d.setDate(d.getDate()+4)
