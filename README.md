@@ -1,7 +1,7 @@
 
 # Rdate
 
-> Rdate 日期时间库，封装了项目种使用频率比较高的方法
+> Rdate 日期时间库，封装了项目中使用频率比较高的方法
 
 [Rdate 文档](http://moxiaofei.com/rdate/)
 
