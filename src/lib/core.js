@@ -73,7 +73,7 @@ export const format = function(...args) {
         */
     for (let k in ret) {
         if (ft.includes(k.substr(0, 1))) {
-            ft = ft.replace(new RegExp(k, "g"), a=>ret[k].substr(0, a.length))
+            ft = ft.replace(new RegExp(k, "g"), a=>a.length==1? ret[k]*1: ret[k].substr(0, a.length))
         }
     }
     

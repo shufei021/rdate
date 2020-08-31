@@ -44,7 +44,10 @@ import {
     getWeekWorkday,
     getGapWeekWorkday,
     getMonthDays,
-    getMonthWeekInfo
+    getMonthWeekInfo,
+    getPassDaysDate,
+    getBetweenDates,
+    previewMoment
 } from "./lib/date"
 /**
  * 时间戳
@@ -97,6 +100,7 @@ Rdate.prototype = {
     previwMonthByDate,
     previewWeek,
     previewMonth,
+    previewMoment,
     weekFirstLast,
     monthFirstLast,
     getCurWeekFirstDay,
@@ -117,6 +121,8 @@ Rdate.prototype = {
     getGapWeekWorkday,
     getMonthDays,
     getMonthWeekInfo,
+    getPassDaysDate,
+    getBetweenDates,
     /** 验证方法*/
     isLeapYear,
     isTime,

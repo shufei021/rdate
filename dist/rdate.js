@@ -1,8 +1,9 @@
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
-  typeof define === 'function' && define.amd ? define(factory) :
-  (global = global || self, global.Rdate = factory());
-}(this, (function () { 'use strict';
+    typeof define === 'function' && define.amd ? define(factory) :
+    (global = global || self, global.Rdate = factory());
+}(this, (function () {
+  'use strict';
 
   function _defineProperty(obj, key, value) {
     if (key in obj) {
@@ -57,8 +58,20 @@
     return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
   }
 
+  function _toConsumableArray(arr) {
+    return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();
+  }
+
+  function _arrayWithoutHoles(arr) {
+    if (Array.isArray(arr)) return _arrayLikeToArray(arr);
+  }
+
   function _arrayWithHoles(arr) {
     if (Array.isArray(arr)) return arr;
+  }
+
+  function _iterableToArray(iter) {
+    if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter);
   }
 
   function _iterableToArrayLimit(arr, i) {
@@ -105,6 +118,10 @@
     return arr2;
   }
 
+  function _nonIterableSpread() {
+    throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+  }
+
   function _nonIterableRest() {
     throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
   }
@@ -130,10 +147,10 @@
 
   var _initFormat = function _initFormat(args, ft) {
     var _args = _slicedToArray(args, 2),
-        a = _args[0],
-        b = _args[1],
-        dt = new Date(),
-        format = ft;
+      a = _args[0],
+      b = _args[1],
+      dt = new Date(),
+      format = ft;
 
     if (args.length == 1) {
       // 参数长度为1个时，检测传入的值的两种情况，不是格式就是时间，传入参数请按规则
@@ -170,6 +187,78 @@
       second: d.getSeconds(),
       millisecond: d.getMilliseconds()
     };
+  };
+
+  /**
+   * 
+   * ***********
+   * * 验证api *
+   * ***********
+   */
+
+  /**
+   * 是否润年
+   * 能被4整除而不能被100整除.(如2004年就是闰年,1900年不是)
+   * @param { Number | String } : 4位数年份，必需
+   * @return 布尔值
+   */
+  var isLeapYear = function isLeapYear(y) {
+    return y % 4 === 0 && y % 100 !== 0 || y % 400 === 0;
+  };
+  /**
+   * 判断时间（时分秒）格式是否有效
+   * @param { String } str ：时分秒，必需
+   * @return 布尔值
+   */
+
+  var isTime = function isTime(str) {
+    var ret = str.match(/^(\d{1,2})(:)?(\d{1,2})\2(\d{1,2})$/);
+    if (ret == null) return false;
+    if (ret[1] >= 24 || ret[3] >= 60 || ret[4] >= 60) return false;
+    return true;
+  };
+  /**
+   * 判断日期（年月日）格式是否有效
+   * @param {String} str ：年月日，必需
+   * @return 布尔值
+   */
+
+  var isDate = function isDate(str) {
+    var ret = str.match(/^(\d{1,4})(-|\/)(\d{1,2})\2(\d{1,2})$/);
+    if (ret == null) return false;
+    var d = new Date(ret[1], ret[3] - 1, ret[4]);
+    return d.getFullYear() == ret[1] && d.getMonth() + 1 == ret[3] && d.getDate() == ret[4];
+  };
+  /**
+   * 判断 完整的年月日时分秒格式是否有效
+   * @param { String } str ：年月日时分秒，必需
+   * @return 布尔值 
+   */
+
+  var isDateTime = function isDateTime(str) {
+    var ret = str.match(/^(\d{4})(-|\/)(\d{1,2})\2(\d{1,2}) (\d{1,2}):(\d{1,2}):(\d{1,2})$/);
+    if (ret == null) return false;
+    var d = new Date(ret[1], ret[3] - 1, ret[4], ret[5], ret[6], ret[7]);
+    return d.getFullYear() == ret[1] && d.getMonth() + 1 == ret[3] && d.getDate() == ret[4] && d.getHours() == ret[5] && d.getMinutes() == ret[6] && d.getSeconds() == ret[7];
+  };
+  /**
+   * 验证一个日期是不是今天
+   * @param { String } dt： 日期，必需
+   * @return 布尔值 
+   */
+
+  var isToday = function isToday(dt) {
+    return new Date().toLocaleDateString() == new Date(typeof dt == 'string' ? dt.replace(/-/g, "/") : dt).toLocaleDateString();
+  };
+  /**
+   * 验证传入的日期是否是昨天
+   * @param {String} dt： 日期，必需
+   */
+
+  var isYesterday = function isYesterday(dt) {
+    var d = new Date();
+    d.setDate(d.getDate() - 1);
+    return d.toLocaleDateString() === new Date(dt).toLocaleDateString();
   };
 
   var year = function year(dt) {
@@ -421,8 +510,8 @@
     var ft = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'yyyy-MM-dd';
 
     var _weekFirstLast = weekFirstLast(dt),
-        first = _weekFirstLast.first,
-        last = _weekFirstLast.last;
+      first = _weekFirstLast.first,
+      last = _weekFirstLast.last;
 
     if (!n) return {
       first: first,
@@ -459,7 +548,7 @@
     var dt = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : new Date();
     var ft = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'yyyy-MM-dd';
     var d = new Date(dt);
-    var w = d.getDay();
+    var w = d.getDay() == 0 ? 7 : d.getDay();
     d.setDate(d.getDate() - w + 1);
     var first = format(d, ft);
     d.setDate(d.getDate() + 4);
@@ -483,8 +572,8 @@
     var ft = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'yyyy-MM-dd';
 
     var _getWeekWorkday = getWeekWorkday(dt),
-        first = _getWeekWorkday.first,
-        last = _getWeekWorkday.last;
+      first = _getWeekWorkday.first,
+      last = _getWeekWorkday.last;
 
     if (!n) return {
       first: first,
@@ -561,12 +650,12 @@
 
   var getMonthWeekInfo = function getMonthWeekInfo(dt) {
     var dd = _dt(dt),
-        ret = {},
-        n = 1,
-        isFirst = true,
-        days = getMonthDays(dd),
-        Month = dd.getMonth() + 1,
-        prefix = dd.getFullYear() + '-' + String(Month).padStart(2, 0) + '-';
+      ret = {},
+      n = 1,
+      isFirst = true,
+      days = getMonthDays(dd),
+      Month = dd.getMonth() + 1,
+      prefix = dd.getFullYear() + '-' + String(Month).padStart(2, 0) + '-';
 
     for (var i = 1; i < days + 1; i++) {
       var re = weekFirstLast(prefix + i);
@@ -606,8 +695,8 @@
     var dd = _dt(dt);
 
     var d1 = new Date(dd.getFullYear(), dd.getMonth(), dd.getDate()),
-        d2 = new Date(dd.getFullYear(), 0, 1),
-        d = Math.round((d1 - d2) / 86400000);
+      d2 = new Date(dd.getFullYear(), 0, 1),
+      d = Math.round((d1 - d2) / 86400000);
     return Math.ceil((d + (d2.getDay() + 1 - 1)) / 7);
   };
   /**
@@ -617,10 +706,10 @@
 
   var getQuarterWeek = function getQuarterWeek(dt) {
     var dd = _dt(dt),
-        y = dd.getFullYear(),
-        m = dd.getMonth() + 1,
-        d = dd.getDate(),
-        ret = getYearWeek([y, m, d].join('/'));
+      y = dd.getFullYear(),
+      m = dd.getMonth() + 1,
+      d = dd.getDate(),
+      ret = getYearWeek([y, m, d].join('/'));
 
     if (m < 4) {
       return ret;
@@ -633,17 +722,80 @@
       return week;
     }
   };
+  /**
+   * 生成 基于当前 / 指定时间的 过去 n 天时间（包含当天日期）
+   * @param {Number} days 基于当前 / 指定时间的 过去 n 天时间（包含当天日期）
+   * @param {Boolean} dt 指定时间
+   * @return 日期数组
+   */
+
+  var getPassDaysDate = function getPassDaysDate(days, dt) {
+    if (!arguments.length) return [];
+    return _toConsumableArray(Array(days * 1 + 1).keys()).map(function (days) {
+      return new Date((dt ? new Date(dt) : Date.now()) - 86400000 * days).toLocaleDateString();
+    }).map(function (item) {
+      return item.split(/\/|-/).map(function (i) {
+        return i.padStart(2, '0');
+      }).join('-');
+    }).splice(1);
+  };
+  /**
+   * 计算两个日期间所有日期，以数组形式返回
+   * 新增时间：2020/8/23
+   * @param { string | number } startDate : 开始日期（13位时间戳 | 字符串日期）
+   * @param { string | number } endDate ：结束日期（13位时间戳 | 字符串日期）
+   * @return 日期间所有日期，以数组形式返回
+   */
+
+  var getBetweenDates = function getBetweenDates(startDate, endDate) {
+    // 如果开始日期都没有，直接返回 []
+    if (!startDate) return []; // 辅助函数
+
+    var helper = function helper(s, i) {
+      return new Date(+new Date(s) + i * 86400000).toLocaleDateString().replace(/\//g, '-');
+    }; // 开始日期时间戳
+
+
+    var startDateStamp = +new Date(new Date(startDate).toLocaleDateString()); // 结束日期时间戳
+
+    var endDateStamp = endDate ? +new Date(new Date(endDate).toLocaleDateString()) : +new Date(new Date().toLocaleDateString()); // 如果两者相等
+
+    if (startDateStamp === endDateStamp) return [helper(new Date(endDate ? new Date() : startDate), 0)]; // 获取最小的日期作为开始日期
+
+    startDate = startDateStamp < endDateStamp ? new Date(startDateStamp) : new Date(endDate ? endDateStamp : +new Date()); // 获取最大的日期作为结束日期
+
+    endDate = startDateStamp < endDateStamp ? new Date(endDate ? endDateStamp : +new Date()) : new Date(startDateStamp); // 计算相差天数
+
+    var gapDays = parseInt(Math.abs(startDateStamp - endDateStamp) / 86400000) + 1; // 返回结果
+
+    return Array(gapDays).fill(0).reduce(function (p, c, i) {
+      return [].concat(_toConsumableArray(p), [helper(startDate, i)]);
+    }, []);
+  };
+  /**
+   * 时刻回显
+   * @param {Number String Date} dt 
+   */
+
+  var previewMoment = function previewMoment(dt) {
+    var target = +new Date(_dt(dt)),
+      cur = +new Date(),
+      diff = parseInt((cur - target) / 1e3),
+      minute = parseInt(diff / 60),
+      hour = parseInt(diff / 3600);
+    return diff <= 60 ? "刚刚" : minute < 60 ? minute + "分钟前" : date(_dt(dt)) === date() ? hour + "小时前" : isYesterday(_dt(dt)) ? "昨天" : year(_dt(dt)) === year() ? format(_dt(dt), "M月d日") : format(_dt(dt), "YYYY/MM/dd");
+  };
 
   /**
-    * ※  Rdate 核心方法
-    * @param  {...any} args :形参，生效的最多为前两个参数
-    * 1个参数情况：
-    *      1.1 参数为格式，则默认格式化当前时间
-    *      1.2 参数为时间戳或字符串时间，则使用默认格式去格式化化给定的 时间戳或字符串时间
-    * 2个参数情况：
-    * 第一个参数表示格式化的日期，可以是时间戳或字符串时间
-    * 第二个参数表示格式
-    */
+   * ※  Rdate 核心方法
+   * @param  {...any} args :形参，生效的最多为前两个参数
+   * 1个参数情况：
+   *      1.1 参数为格式，则默认格式化当前时间
+   *      1.2 参数为时间戳或字符串时间，则使用默认格式去格式化化给定的 时间戳或字符串时间
+   * 2个参数情况：
+   * 第一个参数表示格式化的日期，可以是时间戳或字符串时间
+   * 第二个参数表示格式
+   */
 
   var format = function format() {
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
@@ -665,8 +817,8 @@
 
     var year = String(dt.getFullYear());
     /**
-        * 标记并缓存模板内容
-        */
+     * 标记并缓存模板内容
+     */
 
     var mapVal = [];
     ft = ft.replace(/\[(.+?)\]/g, function (a) {
@@ -674,8 +826,8 @@
       return "|";
     });
     /**
-        * 星期兼容:星期/周
-        */
+     * 星期兼容:星期/周
+     */
 
     if (ft.includes('w')) {
       //星期
@@ -691,8 +843,8 @@
       });
     }
     /**
-        * 时辰替换
-        */
+     * 时辰替换
+     */
 
 
     if (ft.includes('t')) {
@@ -701,8 +853,8 @@
       });
     }
     /**
-        * 年的的标识字母 兼容连续的大写 小写
-        */
+     * 年的的标识字母 兼容连续的大写 小写
+     */
 
 
     if (ft.includes('Y')) {
@@ -717,8 +869,8 @@
       });
     }
     /**
-        * 兼容时的字母大小写
-        */
+     * 兼容时的字母大小写
+     */
 
 
     if (ft.includes('H')) {
@@ -727,14 +879,14 @@
       });
     }
     /**
-        * 开始进行正常的时间格式替换
-        */
+     * 开始进行正常的时间格式替换
+     */
 
 
     var _loop = function _loop(k) {
       if (ft.includes(k.substr(0, 1))) {
         ft = ft.replace(new RegExp(k, "g"), function (a) {
-          return ret[k].substr(0, a.length);
+          return a.length == 1 ? ret[k] * 1 : ret[k].substr(0, a.length);
         });
       }
     };
@@ -743,8 +895,8 @@
       _loop(k);
     }
     /**
-        * 模板字符串处理
-        */
+     * 模板字符串处理
+     */
 
 
     var formatArr = ft.split('|');
@@ -754,8 +906,8 @@
       res += formatArr[i] + mapVal[i];
     }
     /** 
-        * 处理特殊情况
-    */
+     * 处理特殊情况
+     */
 
 
     if ((res + ' ').slice(-10, -1) === 'undefined' && formatArr[formatArr.length - 1] !== '|') {
@@ -764,78 +916,6 @@
 
 
     return res;
-  };
-
-  /**
-   * 
-   * ***********
-   * * 验证api *
-   * ***********
-   */
-
-  /**
-   * 是否润年
-   * 能被4整除而不能被100整除.(如2004年就是闰年,1900年不是)
-   * @param { Number | String } : 4位数年份，必需
-   * @return 布尔值
-   */
-  var isLeapYear = function isLeapYear(y) {
-    return y % 4 === 0 && y % 100 !== 0 || y % 400 === 0;
-  };
-  /**
-   * 判断时间（时分秒）格式是否有效
-   * @param { String } str ：时分秒，必需
-   * @return 布尔值
-   */
-
-  var isTime = function isTime(str) {
-    var ret = str.match(/^(\d{1,2})(:)?(\d{1,2})\2(\d{1,2})$/);
-    if (ret == null) return false;
-    if (ret[1] >= 24 || ret[3] >= 60 || ret[4] >= 60) return false;
-    return true;
-  };
-  /**
-   * 判断日期（年月日）格式是否有效
-   * @param {String} str ：年月日，必需
-   * @return 布尔值
-   */
-
-  var isDate = function isDate(str) {
-    var ret = str.match(/^(\d{1,4})(-|\/)(\d{1,2})\2(\d{1,2})$/);
-    if (ret == null) return false;
-    var d = new Date(ret[1], ret[3] - 1, ret[4]);
-    return d.getFullYear() == ret[1] && d.getMonth() + 1 == ret[3] && d.getDate() == ret[4];
-  };
-  /**
-   * 判断 完整的年月日时分秒格式是否有效
-   * @param { String } str ：年月日时分秒，必需
-   * @return 布尔值 
-   */
-
-  var isDateTime = function isDateTime(str) {
-    var ret = str.match(/^(\d{4})(-|\/)(\d{1,2})\2(\d{1,2}) (\d{1,2}):(\d{1,2}):(\d{1,2})$/);
-    if (ret == null) return false;
-    var d = new Date(ret[1], ret[3] - 1, ret[4], ret[5], ret[6], ret[7]);
-    return d.getFullYear() == ret[1] && d.getMonth() + 1 == ret[3] && d.getDate() == ret[4] && d.getHours() == ret[5] && d.getMinutes() == ret[6] && d.getSeconds() == ret[7];
-  };
-  /**
-   * 验证一个日期是不是今天
-   * @param { String } dt： 日期，必需
-   * @return 布尔值 
-   */
-
-  var isToday = function isToday(dt) {
-    return new Date().toLocaleDateString() == new Date(typeof dt == 'string' ? dt.replace(/-/g, "/") : dt).toLocaleDateString();
-  };
-  /**
-   * 验证传入的日期是否是昨天
-   * @param {String} dt： 日期，必需
-   */
-
-  var isYesterday = function isYesterday(dt) {
-    var d = new Date();
-    d.setDate(d.getDate() - 1);
-    return d.toLocaleDateString() === new Date(dt).toLocaleDateString();
   };
 
   /**
@@ -870,7 +950,7 @@
 
   var getStampBeforAfter = function getStampBeforAfter(dt) {
     var d = _dt(dt),
-        b;
+      b;
 
     d.setDate(d.getDate() - 1);
     b = +d;
@@ -906,7 +986,7 @@
   };
 
   /**
-   *核心方法
+   *构造函数
    *
    */
 
@@ -941,6 +1021,7 @@
     previwMonthByDate: previwMonthByDate,
     previewWeek: previewWeek,
     previewMonth: previewMonth,
+    previewMoment: previewMoment,
     weekFirstLast: weekFirstLast,
     monthFirstLast: monthFirstLast,
     getCurWeekFirstDay: getCurWeekFirstDay,
@@ -961,6 +1042,8 @@
     getGapWeekWorkday: getGapWeekWorkday,
     getMonthDays: getMonthDays,
     getMonthWeekInfo: getMonthWeekInfo,
+    getPassDaysDate: getPassDaysDate,
+    getBetweenDates: getBetweenDates,
 
     /** 验证方法*/
     isLeapYear: isLeapYear,
@@ -980,4 +1063,3 @@
   return Rdate;
 
 })));
-//# sourceMappingURL=rdate.js.map
