@@ -15,7 +15,9 @@ import {
     format
 } from "./core"
 
-import {isYesterday} from "./verify"
+import {
+    isYesterday
+} from "./verify"
 
 export const year = function (dt) {
     return _details(dt).year
@@ -249,7 +251,7 @@ export const getGapWeek = function (n = 0, dt = new Date(), ft = 'yyyy-MM-dd') {
     let {
         first,
         last
-    } = weekFirstLast(dt)
+    } = weekFirstLast(dt,ft)
     if (!n) return {
         first,
         last
@@ -279,7 +281,6 @@ export const getGapDate = function (n = 0, dt = new Date(), ft) {
  * @param { String | Number } dt ：日期 或 时间戳
  * @param { String } ft ：格式
  */
-<<<<<<< HEAD
 export const getWeekWorkday = function (dt = new Date(), ft = 'yyyy-MM-dd') {
     let d = new Date(dt)
     let w = d.getDay() == 0 ? 7 : d.getDay()
@@ -291,16 +292,6 @@ export const getWeekWorkday = function (dt = new Date(), ft = 'yyyy-MM-dd') {
         first,
         last
     }
-=======
-export const getWeekWorkday = function(dt = new Date(),ft='yyyy-MM-dd'){
-    let d= new Date(dt)
-    let w = d.getDay()==0?7:d.getDay()
-    d.setDate(d.getDate()-w+1)
-    let first = format(d,ft)
-    d.setDate(d.getDate()+4)
-    let last = format(d,ft)
-    return {first,last}
->>>>>>> c6e95249dc40181b99a6808a9209c563edac171e
 }
 
 /**
@@ -444,7 +435,6 @@ export const getQuarterWeek = function (dt) {
         return week
     }
 }
-<<<<<<< HEAD
 
 /**
  * 生成 基于当前 / 指定时间的 过去 n 天时间（包含当天日期）
@@ -489,17 +479,15 @@ export const getBetweenDates = function (startDate, endDate) {
  * 时刻回显
  * @param {Number String Date} dt 
  */
-export const previewMoment = function(dt) {
+export const previewMoment = function (dt) {
     let target = +new Date(_dt(dt)),
         cur = +new Date,
         diff = parseInt((cur - target) / 1e3),
         minute = parseInt(diff / 60),
         hour = parseInt(diff / 3600);
-    return  diff<= 60 ? "刚刚" : 
-            minute < 60 ? minute + "分钟前" : 
-            date(_dt(dt)) === date() ? hour + "小时前" :
-            isYesterday(_dt(dt)) ? "昨天" :
-            year(_dt(dt)) === year() ? format(_dt(dt), "M月d日") : format(_dt(dt), "YYYY/MM/dd")
+    return diff <= 60 ? "刚刚" :
+        minute < 60 ? minute + "分钟前" :
+        date(_dt(dt)) === date() ? hour + "小时前" :
+        isYesterday(_dt(dt)) ? "昨天" :
+        year(_dt(dt)) === year() ? format(_dt(dt), "M月d日") : format(_dt(dt), "YYYY/MM/dd")
 }
-=======
->>>>>>> c6e95249dc40181b99a6808a9209c563edac171e

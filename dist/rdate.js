@@ -1,9 +1,8 @@
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
-    typeof define === 'function' && define.amd ? define(factory) :
-    (global = global || self, global.Rdate = factory());
-}(this, (function () {
-  'use strict';
+  typeof define === 'function' && define.amd ? define(factory) :
+  (global = global || self, global.Rdate = factory());
+}(this, (function () { 'use strict';
 
   function _defineProperty(obj, key, value) {
     if (key in obj) {
@@ -147,10 +146,10 @@
 
   var _initFormat = function _initFormat(args, ft) {
     var _args = _slicedToArray(args, 2),
-      a = _args[0],
-      b = _args[1],
-      dt = new Date(),
-      format = ft;
+        a = _args[0],
+        b = _args[1],
+        dt = new Date(),
+        format = ft;
 
     if (args.length == 1) {
       // 参数长度为1个时，检测传入的值的两种情况，不是格式就是时间，传入参数请按规则
@@ -509,9 +508,9 @@
     var dt = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : new Date();
     var ft = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'yyyy-MM-dd';
 
-    var _weekFirstLast = weekFirstLast(dt),
-      first = _weekFirstLast.first,
-      last = _weekFirstLast.last;
+    var _weekFirstLast = weekFirstLast(dt, ft),
+        first = _weekFirstLast.first,
+        last = _weekFirstLast.last;
 
     if (!n) return {
       first: first,
@@ -572,8 +571,8 @@
     var ft = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'yyyy-MM-dd';
 
     var _getWeekWorkday = getWeekWorkday(dt),
-      first = _getWeekWorkday.first,
-      last = _getWeekWorkday.last;
+        first = _getWeekWorkday.first,
+        last = _getWeekWorkday.last;
 
     if (!n) return {
       first: first,
@@ -650,12 +649,12 @@
 
   var getMonthWeekInfo = function getMonthWeekInfo(dt) {
     var dd = _dt(dt),
-      ret = {},
-      n = 1,
-      isFirst = true,
-      days = getMonthDays(dd),
-      Month = dd.getMonth() + 1,
-      prefix = dd.getFullYear() + '-' + String(Month).padStart(2, 0) + '-';
+        ret = {},
+        n = 1,
+        isFirst = true,
+        days = getMonthDays(dd),
+        Month = dd.getMonth() + 1,
+        prefix = dd.getFullYear() + '-' + String(Month).padStart(2, 0) + '-';
 
     for (var i = 1; i < days + 1; i++) {
       var re = weekFirstLast(prefix + i);
@@ -695,8 +694,8 @@
     var dd = _dt(dt);
 
     var d1 = new Date(dd.getFullYear(), dd.getMonth(), dd.getDate()),
-      d2 = new Date(dd.getFullYear(), 0, 1),
-      d = Math.round((d1 - d2) / 86400000);
+        d2 = new Date(dd.getFullYear(), 0, 1),
+        d = Math.round((d1 - d2) / 86400000);
     return Math.ceil((d + (d2.getDay() + 1 - 1)) / 7);
   };
   /**
@@ -706,10 +705,10 @@
 
   var getQuarterWeek = function getQuarterWeek(dt) {
     var dd = _dt(dt),
-      y = dd.getFullYear(),
-      m = dd.getMonth() + 1,
-      d = dd.getDate(),
-      ret = getYearWeek([y, m, d].join('/'));
+        y = dd.getFullYear(),
+        m = dd.getMonth() + 1,
+        d = dd.getDate(),
+        ret = getYearWeek([y, m, d].join('/'));
 
     if (m < 4) {
       return ret;
@@ -779,23 +778,23 @@
 
   var previewMoment = function previewMoment(dt) {
     var target = +new Date(_dt(dt)),
-      cur = +new Date(),
-      diff = parseInt((cur - target) / 1e3),
-      minute = parseInt(diff / 60),
-      hour = parseInt(diff / 3600);
+        cur = +new Date(),
+        diff = parseInt((cur - target) / 1e3),
+        minute = parseInt(diff / 60),
+        hour = parseInt(diff / 3600);
     return diff <= 60 ? "刚刚" : minute < 60 ? minute + "分钟前" : date(_dt(dt)) === date() ? hour + "小时前" : isYesterday(_dt(dt)) ? "昨天" : year(_dt(dt)) === year() ? format(_dt(dt), "M月d日") : format(_dt(dt), "YYYY/MM/dd");
   };
 
   /**
-   * ※  Rdate 核心方法
-   * @param  {...any} args :形参，生效的最多为前两个参数
-   * 1个参数情况：
-   *      1.1 参数为格式，则默认格式化当前时间
-   *      1.2 参数为时间戳或字符串时间，则使用默认格式去格式化化给定的 时间戳或字符串时间
-   * 2个参数情况：
-   * 第一个参数表示格式化的日期，可以是时间戳或字符串时间
-   * 第二个参数表示格式
-   */
+    * ※  Rdate 核心方法
+    * @param  {...any} args :形参，生效的最多为前两个参数
+    * 1个参数情况：
+    *      1.1 参数为格式，则默认格式化当前时间
+    *      1.2 参数为时间戳或字符串时间，则使用默认格式去格式化化给定的 时间戳或字符串时间
+    * 2个参数情况：
+    * 第一个参数表示格式化的日期，可以是时间戳或字符串时间
+    * 第二个参数表示格式
+    */
 
   var format = function format() {
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
@@ -817,8 +816,8 @@
 
     var year = String(dt.getFullYear());
     /**
-     * 标记并缓存模板内容
-     */
+        * 标记并缓存模板内容
+        */
 
     var mapVal = [];
     ft = ft.replace(/\[(.+?)\]/g, function (a) {
@@ -826,8 +825,8 @@
       return "|";
     });
     /**
-     * 星期兼容:星期/周
-     */
+        * 星期兼容:星期/周
+        */
 
     if (ft.includes('w')) {
       //星期
@@ -843,8 +842,8 @@
       });
     }
     /**
-     * 时辰替换
-     */
+        * 时辰替换
+        */
 
 
     if (ft.includes('t')) {
@@ -853,8 +852,8 @@
       });
     }
     /**
-     * 年的的标识字母 兼容连续的大写 小写
-     */
+        * 年的的标识字母 兼容连续的大写 小写
+        */
 
 
     if (ft.includes('Y')) {
@@ -869,8 +868,8 @@
       });
     }
     /**
-     * 兼容时的字母大小写
-     */
+        * 兼容时的字母大小写
+        */
 
 
     if (ft.includes('H')) {
@@ -879,8 +878,8 @@
       });
     }
     /**
-     * 开始进行正常的时间格式替换
-     */
+        * 开始进行正常的时间格式替换
+        */
 
 
     var _loop = function _loop(k) {
@@ -895,8 +894,8 @@
       _loop(k);
     }
     /**
-     * 模板字符串处理
-     */
+        * 模板字符串处理
+        */
 
 
     var formatArr = ft.split('|');
@@ -906,8 +905,8 @@
       res += formatArr[i] + mapVal[i];
     }
     /** 
-     * 处理特殊情况
-     */
+        * 处理特殊情况
+    */
 
 
     if ((res + ' ').slice(-10, -1) === 'undefined' && formatArr[formatArr.length - 1] !== '|') {
@@ -950,7 +949,7 @@
 
   var getStampBeforAfter = function getStampBeforAfter(dt) {
     var d = _dt(dt),
-      b;
+        b;
 
     d.setDate(d.getDate() - 1);
     b = +d;
@@ -986,7 +985,7 @@
   };
 
   /**
-   *构造函数
+   *核心方法
    *
    */
 
