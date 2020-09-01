@@ -29,13 +29,13 @@
 | 获取、格式化 当前时间、指定时间                              | format             |
 | 获取本周第一天                                               | getCurWeekFirstDay |
 | 获取本周最后一天                                             | getCurWeekLastDay  |
-| 获取当前时间所在月有多少天、指定时间所在月有多少天           | getMonthDays       |
-| 获取当前时间的前 n 天 或 后 n 天 的日期、指定时间的前 n 天 或 后 n 天 的日期 | getGapDate         |
+| 获取 当前时间 指定日期 所在月有多少天           | getMonthDays       |
+| 获取 当前时间 指定日期的前 n 天 或 后 n 天 的日期 | getGapDate         |
 | 获取本周首末日期，前 n 周、后n周的首末日期                   | getGapWeek         |
-| 获取当前时间 指定日期 对应年份的第几周                       | getYearWeek        |
-| 获取当前时间 指定日期 对应月份的第几周                       | getMonthWeek       |
-| 获取当前时间 指定日期 所在对应季度的第几周                   | getQuarterWeek     |
-| 获取当前时间 指定日期 所在周的首末日期                       | weekFirstLast      |
+| 获取 当前时间 指定日期 对应年份的第几周                       | getYearWeek        |
+| 获取 当前时间 指定日期 对应月份的第几周                       | getMonthWeek       |
+| 获取 当前时间 指定日期 所在对应季度的第几周                   | getQuarterWeek     |
+| 获取 当前时间 指定日期 所在周的首末日期                       | weekFirstLast      |
 | 获取 当前时间 指定日期 所在月的开始日期                      | getMonthFirstDay   |
 | 获取 当前时间指定日期 所在月的结束日期                       | getMonthLastDay    |
 | 获取 当前时间 指定时间 的所在月份的首末日期                  | monthFirstLast     |
