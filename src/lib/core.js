@@ -1,96 +1,55 @@
-import { _initFormat } from "./helper"
-import { when , previwWeekByDate } from "./date"
+/*
+ * @Description: Rdate 日期核心方法
+ * @Author: shufei
+ * @Date: 2020-10-08 09:38:52
+ * @LastEditTime: 2020-11-13 11:56:03
+ * @LastEditors: shufei
+ */
+
+import { _initFormat, padStart } from './helper'
+import { when, previwWeekByDate } from './date'
 
 /**
-  * ※  Rdate 核心方法
-  * @param  {...any} args :形参，生效的最多为前两个参数
-  * 1个参数情况：
-  *      1.1 参数为格式，则默认格式化当前时间
-  *      1.2 参数为时间戳或字符串时间，则使用默认格式去格式化化给定的 时间戳或字符串时间
-  * 2个参数情况：
-  * 第一个参数表示格式化的日期，可以是时间戳或字符串时间
-  * 第二个参数表示格式
-  */
-export const format = function(...args) {
-    let dt = _initFormat(args,'yyyy-MM-dd hh:mm:ss').dt;
-    let ft = _initFormat(args,'yyyy-MM-dd hh:mm:ss').format;
-    // 时间补位对象
+ * ※  Rdate 核心方法
+ * @param  {...any} args :形参，生效的最多为前两个参数
+ * 1个参数情况：
+ *      1.1 参数为格式，则默认格式化当前时间
+ *      1.2 参数为时间戳或字符串时间，则使用默认格式去格式化化给定的 时间戳或字符串时间
+ * 2个参数情况：
+ * 第一个参数表示格式化的日期，可以是时间戳或字符串时间
+ * 第二个参数表示格式
+ */
+export const format = function (...args) {
+    let dt = _initFormat(args, 'yyyy-MM-dd hh:mm:ss').dt
+    let ft = _initFormat(args, 'yyyy-MM-dd hh:mm:ss').format
     let ret = {
-        "M+": String((dt.getMonth() + 1)).padStart(2, 0),
-        "d+": String(dt.getDate()).padStart(2, 0),
-        "h+": String(dt.getHours()).padStart(2, 0),
-        "m+": String(dt.getMinutes()).padStart(2, 0),
-        "s+": String(dt.getSeconds()).padStart(2, 0)
+        Y: String(dt.getFullYear()),
+        y: String(dt.getFullYear()),
+        M: padStart(dt.getMonth() + 1, 2, 0),
+        d: padStart(dt.getDate(), 2, 0),
+        h: padStart(dt.getHours(), 2, 0),
+        H: padStart(dt.getHours(), 2, 0),
+        m: padStart(dt.getMinutes(), 2, 0),
+        s: padStart(dt.getSeconds(), 2, 0),
+        W: previwWeekByDate(dt, '周'),
+        w: previwWeekByDate(dt),
+        t: when(dt)
     }
-    // 需特别处理年
-    let year = String(dt.getFullYear())
-    /**
-        * 标记并缓存模板内容
-        */
-    let mapVal = [] 
-    ft = ft.replace(/\[(.+?)\]/g,function(a){
-        mapVal.push(a.slice(1,-1))
-        return "|"
-    })
-
-    /**
-        * 星期兼容:星期/周
-        */
-    if(ft.includes('w')){//星期
-        ft = ft.replace(/((w)+)/g, () => previwWeekByDate(dt))
-    }
-
-    if(ft.includes('W')){//周
-        ft = ft.replace(/((W)+)/g, () => previwWeekByDate(dt,'周'))
-    }
-
-    /**
-        * 时辰替换
-        */
-    if(ft.includes('t')){
-        ft = ft.replace(/((t)+)/g, () => when(dt))
-    }
-    /**
-        * 年的的标识字母 兼容连续的大写 小写
-        */
-    if(ft.includes('Y')){
-        ft = ft.replace(/((Y)+)/g, a => year.substr(4-a.length))
-        
-    }
-    if(ft.includes('y')){
-        ft = ft.replace(/((y)+)/g, a => year.substr(4-a.length))
-        
-    }
-    /**
-        * 兼容时的字母大小写
-        */
-    if(ft.includes('H')){
-        ft = ft.replace(/((H)+)/g, a => ret['h+'].substr(0, a.length))
-    }
-        
-    /**
-        * 开始进行正常的时间格式替换
-        */
-    for (let k in ret) {
-        if (ft.includes(k.substr(0, 1))) {
-            ft = ft.replace(new RegExp(k, "g"), a=>a.length==1? ret[k]*1: ret[k].substr(0, a.length))
+    ft = ft.replace(/\[([^\]]+)]|y{1,4}|Y{1,4}|M{1,2}|d{1,2}|h{1,2}|H{1,2}|m{1,2}|s{1,2}|t|w|W|S/g, function (b) {
+        // 匹配中的首字符
+        let k = b.charAt(0)
+        // 匹配到的字符串长度
+        let len = b.length
+        if (b.includes('[')) {
+            // 如果是模板字符串，去除首尾返回
+            return b.slice(1, -1)
+        } else if (['Y', 'y'].includes(k)) {
+            // 如果是年份，根据正则处理返回
+            return b.replace(new RegExp('((' + k + ')+)', 'g'), a => ret[k].substr(4 - a.length))
+        } else {
+            // 如果匹配字符串长度为1并且非星期（W、w）和 非时辰（t）转成实际数字 其他一律原样返回
+            return len == 1 && !['W', 'w', 't'].includes(k) ? Number(ret[k]) : ret[k]
         }
-    }
-    
-    /**
-        * 模板字符串处理
-        */
-    let formatArr = ft.split('|')
-    let res  = ''
-    for(let i=0;i<formatArr.length;i++){
-        res += (formatArr[i]+mapVal[i])
-    }
-    /** 
-        * 处理特殊情况
-    */
-    if((res+' ').slice(-10,-1)==='undefined' && formatArr[formatArr.length-1]!=='|'){
-        res = res.slice(0,-9)
-    }
-    // 返回处理的结果
-    return res
+    })
+    return ft
 }
