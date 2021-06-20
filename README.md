@@ -9,9 +9,9 @@
 node.js
 
 ```js
-> npm i rookie_date -save
+> npm i rdatejs -save
 ```
 
 ```js
-import rdate from 'rookie_date'
+import rdate from 'rdatejs'
 ```
