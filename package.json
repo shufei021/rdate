@@ -1,5 +1,5 @@
 {
-    "name": "rookie_date",
+    "name": "rdatejs",
     "version": "0.0.1",
     "description": "date-time ibrary ",
     "private": false,
@@ -28,6 +28,11 @@
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "keywords": [],
-    "author": "",
-    "license": "ISC"
+    "author": "shufei",
+    "license": "ISC",
+    "homepage": "https://shufei021.github.io/rdate/",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/shufei021/rdate.git"
+    }
 }
