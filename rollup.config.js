@@ -6,7 +6,7 @@ import requireContext from 'rollup-plugin-require-context'
 export default {
     input: `src/index.js`,
     output: {
-        file: `./build/rdate.min.js`,
+        file: `./build/index.js`,
         format: 'umd',
         name: 'rdate',
         sourcemap: false

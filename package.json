@@ -1,7 +1,7 @@
 {
-    "name": "handday",
-    "version": "1.0.19",
-    "description": "",
+    "name": "rookie_date",
+    "version": "0.0.1",
+    "description": "date-time ibrary ",
     "private": false,
     "main": "./index.js",
     "dependencies": {
