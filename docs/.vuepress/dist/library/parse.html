@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>取值/赋值 | Rdate.js</title>
+    <meta name="generator" content="VuePress 1.7.1">
+    <link rel="icon" href="/favicon.png">
+    <meta name="description" content="">
+    
+    <link rel="preload" href="/assets/css/0.styles.dd91092c.css" as="style"><link rel="preload" href="/assets/js/app.8b32a31c.js" as="script"><link rel="preload" href="/assets/js/2.06f51da2.js" as="script"><link rel="preload" href="/assets/js/12.5287c55a.js" as="script"><link rel="prefetch" href="/assets/js/10.9b16df82.js"><link rel="prefetch" href="/assets/js/11.bdc00bf8.js"><link rel="prefetch" href="/assets/js/13.9907e255.js"><link rel="prefetch" href="/assets/js/3.1ab9b775.js"><link rel="prefetch" href="/assets/js/4.967f2274.js"><link rel="prefetch" href="/assets/js/5.41f8f5e2.js"><link rel="prefetch" href="/assets/js/6.9f864095.js"><link rel="prefetch" href="/assets/js/7.4eaf9f79.js"><link rel="prefetch" href="/assets/js/8.a0a31a39.js"><link rel="prefetch" href="/assets/js/9.c6710307.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.dd91092c.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/time.png" alt="Rdate.js" class="logo"> <span class="site-name can-hide">Rdate.js</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="/library/" class="nav-link router-link-active">
+  文档
+</a></div><div class="nav-item"><a href="https://github.com/shufei021/rdate" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><a href="https://github.com/shufei021/rutils" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  友情链接
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="/library/" class="nav-link router-link-active">
+  文档
+</a></div><div class="nav-item"><a href="https://github.com/shufei021/rdate" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><a href="https://github.com/shufei021/rutils" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  友情链接
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span></span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/library/" aria-current="page" class="sidebar-link">安装</a></li><li><a href="/library/display.html" class="sidebar-link">显示</a></li><li><a href="/library/parse.html" aria-current="page" class="active sidebar-link">取值/赋值</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/library/parse.html#年" class="sidebar-link">年</a></li><li class="sidebar-sub-header"><a href="/library/parse.html#月" class="sidebar-link">月</a></li><li class="sidebar-sub-header"><a href="/library/parse.html#日期" class="sidebar-link">日期</a></li><li class="sidebar-sub-header"><a href="/library/parse.html#小时" class="sidebar-link">小时</a></li><li class="sidebar-sub-header"><a href="/library/parse.html#分钟" class="sidebar-link">分钟</a></li><li class="sidebar-sub-header"><a href="/library/parse.html#秒" class="sidebar-link">秒</a></li><li class="sidebar-sub-header"><a href="/library/parse.html#毫秒" class="sidebar-link">毫秒</a></li><li class="sidebar-sub-header"><a href="/library/parse.html#星期" class="sidebar-link">星期</a></li><li class="sidebar-sub-header"><a href="/library/parse.html#季度" class="sidebar-link">季度</a></li><li class="sidebar-sub-header"><a href="/library/parse.html#设置" class="sidebar-link">设置</a></li><li class="sidebar-sub-header"><a href="/library/parse.html#获取" class="sidebar-link">获取</a></li><li class="sidebar-sub-header"><a href="/library/parse.html#最大值" class="sidebar-link">最大值</a></li><li class="sidebar-sub-header"><a href="/library/parse.html#最小值" class="sidebar-link">最小值</a></li></ul></li><li><a href="/library/manipulate.html" class="sidebar-link">操作</a></li><li><a href="/library/query.html" class="sidebar-link">查询</a></li><li><a href="/library/other.html" class="sidebar-link">其它</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="取值-赋值"><a href="#取值-赋值" class="header-anchor">#</a> 取值/赋值</h1> <h2 id="年"><a href="#年" class="header-anchor">#</a> 年</h2> <p>获取或设置年份。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 获取当前年份</span>
+rdate<span class="token punctuation">.</span><span class="token function">year</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment">// 设置当前日期当中的年份为2025</span>
+rdate<span class="token punctuation">.</span><span class="token function">year</span><span class="token punctuation">(</span><span class="token number">2025</span><span class="token punctuation">)</span>
+
+<span class="token comment">//设置 指定日期的年份为指定年份</span>
+rdate<span class="token punctuation">.</span><span class="token function">year</span><span class="token punctuation">(</span><span class="token number">2025</span><span class="token punctuation">,</span> <span class="token string">'2021-1-1 12:59:59'</span><span class="token punctuation">)</span> <span class="token comment">//&quot;2025-01-01 12:59:59&quot;</span>
+
+<span class="token comment">// 指定格式</span>
+rdate<span class="token punctuation">.</span><span class="token function">year</span><span class="token punctuation">(</span><span class="token number">2025</span><span class="token punctuation">,</span> <span class="token string">'2021-1-1 12:59:59'</span><span class="token punctuation">,</span> <span class="token string">'yyyy-MM-dd'</span><span class="token punctuation">)</span> <span class="token comment">// &quot;2025-01-01&quot;</span>
+</code></pre></div><h2 id="月"><a href="#月" class="header-anchor">#</a> 月</h2> <p>获取或设置月份。</p> <p>接受 0 到 11 的数字。如果超过这个范围，将一直持续到年底。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 获取当前月份</span>
+rdate<span class="token punctuation">.</span><span class="token function">month</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment">// 设置当前日期当中的月份为5</span>
+rdate<span class="token punctuation">.</span><span class="token function">month</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span>
+
+<span class="token comment">//设置 指定日期的月份为指定月份</span>
+rdate<span class="token punctuation">.</span><span class="token function">month</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token string">'2021-1-1 12:59:59'</span><span class="token punctuation">)</span> <span class="token comment">//&quot;2025-02-01 12:59:59&quot;</span>
+</code></pre></div><div class="custom-block warning"><p class="custom-block-title">注意</p> <p>月份的索引为 0，因此 设置 1 月时则实际设置 值为 0</p></div> <h2 id="日期"><a href="#日期" class="header-anchor">#</a> 日期</h2> <p>获取或设置月份的日期。</p> <p>接受从 1 到 31 的数字。如果超过这个范围，将持续到日。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 获取当前日期</span>
+rdate<span class="token punctuation">.</span><span class="token function">date</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment">// 设置当前日期当中的日期为20</span>
+rdate<span class="token punctuation">.</span><span class="token function">date</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span>
+
+<span class="token comment">//设置 指定日期的日期为指定日期</span>
+rdate<span class="token punctuation">.</span><span class="token function">date</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">,</span> <span class="token string">'2021-1-1 12:59:59'</span><span class="token punctuation">)</span> <span class="token comment">//&quot;2025-01-20 12:59:59&quot;</span>
+
+<span class="token comment">// 指定格式</span>
+rdate<span class="token punctuation">.</span><span class="token function">date</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">,</span> <span class="token string">'2021-1-1 12:59:59'</span><span class="token punctuation">,</span> <span class="token string">'yyyy-MM-dd'</span><span class="token punctuation">)</span> <span class="token comment">// &quot;2025-01-20&quot;</span>
+</code></pre></div><h2 id="小时"><a href="#小时" class="header-anchor">#</a> 小时</h2> <p>获取或设置小时。</p> <p>接受 0 到 59 的数字。如果超过这个范围，将持续到日。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 获取当前小时</span>
+rdate<span class="token punctuation">.</span><span class="token function">hour</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment">// 设置当前日期小时为20</span>
+rdate<span class="token punctuation">.</span><span class="token function">hour</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span>
+
+<span class="token comment">//设置 指定日期的小时为指定小时</span>
+rdate<span class="token punctuation">.</span><span class="token function">hour</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">,</span> <span class="token string">'2021-1-1 12:59:59'</span><span class="token punctuation">)</span> <span class="token comment">// &quot;2021-01-01 20:59:59&quot;</span>
+</code></pre></div><h2 id="分钟"><a href="#分钟" class="header-anchor">#</a> 分钟</h2> <p>获取或设置分钟。</p> <p>接受 0 到 59 的数字。如果超过这个范围，将持续到小时。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 获取当前日期的分钟</span>
+rdate<span class="token punctuation">.</span><span class="token function">minute</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment">// 设置当前日期当中的分钟为20</span>
+rdate<span class="token punctuation">.</span><span class="token function">minute</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span>
+
+<span class="token comment">//设置 指定日期的年份为指定年份</span>
+rdate<span class="token punctuation">.</span><span class="token function">minute</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">,</span> <span class="token string">'2021-1-1 12:59:59'</span><span class="token punctuation">)</span> <span class="token comment">//&quot;2025-01-01 12:20:59&quot;</span>
+</code></pre></div><h2 id="秒"><a href="#秒" class="header-anchor">#</a> 秒</h2> <p>获取或设置秒。</p> <p>接受 0 到 59 的数字。如果超过这个范围，将持续到分钟。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 获取当前日期秒数</span>
+rdate<span class="token punctuation">.</span><span class="token function">second</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment">// 设置当前日期当中的秒数为指定秒数</span>
+rdate<span class="token punctuation">.</span><span class="token function">second</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span>
+
+<span class="token comment">//设置 指定日期的年份为指定年份</span>
+rdate<span class="token punctuation">.</span><span class="token function">second</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">,</span> <span class="token string">'2021-1-1 12:59:59'</span><span class="token punctuation">)</span> <span class="token comment">//&quot;2025-01-01 12:59:20&quot;</span>
+</code></pre></div><h2 id="毫秒"><a href="#毫秒" class="header-anchor">#</a> 毫秒</h2> <p>获取或设置毫秒。</p> <p>接受 0 到 999 的数字。如果超过这个范围，将持续到秒。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 获取当前时间的毫秒数</span>
+rdate<span class="token punctuation">.</span><span class="token function">millisecond</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment">// 设置当前日期当中的秒数为指定毫秒数</span>
+rdate<span class="token punctuation">.</span><span class="token function">millisecond</span><span class="token punctuation">(</span><span class="token number">2025</span><span class="token punctuation">)</span>
+
+<span class="token comment">//设置 指定日期的毫秒数为 指定 毫秒数</span>
+rdate<span class="token punctuation">.</span><span class="token function">millisecond</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">,</span> <span class="token string">'2021-1-1 12:59:59'</span><span class="token punctuation">,</span> <span class="token string">'毫秒数为SSS'</span><span class="token punctuation">)</span> <span class="token comment">// &quot;毫秒数为020&quot;</span>
+</code></pre></div><h2 id="星期"><a href="#星期" class="header-anchor">#</a> 星期</h2> <p>获取或设置星期几。</p> <p>接受 0(上周星期日) 到 7(本周星期日)的数字。如果超过这个范围，将持续到几周。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 获取当前星期</span>
+rdate<span class="token punctuation">.</span><span class="token function">day</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment">// 设置当前日期当中回退到周2日期</span>
+rdate<span class="token punctuation">.</span><span class="token function">day</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+
+<span class="token comment">//设置 指定日期的回退至周2的日期</span>
+rdate<span class="token punctuation">.</span><span class="token function">year</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token string">'2021-1-1 12:59:59'</span><span class="token punctuation">)</span> <span class="token comment">//&quot;2020-12-29 12:59:59&quot;</span>
+</code></pre></div><h2 id="季度"><a href="#季度" class="header-anchor">#</a> 季度</h2> <p>获取或设置季度。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 获取当前星期</span>
+rdate<span class="token punctuation">.</span><span class="token function">quarter</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+rdate<span class="token punctuation">.</span><span class="token function">quarter</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'2021-1-1'</span><span class="token punctuation">)</span> <span class="token comment">// '2021-01-10 00:00:00'</span>
+rdate<span class="token punctuation">.</span><span class="token function">quarter</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token string">'2021-1-1'</span><span class="token punctuation">)</span> <span class="token comment">// '2021-04-10 00:00:00'</span>
+rdate<span class="token punctuation">.</span><span class="token function">quarter</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token string">'2021-1-1'</span><span class="token punctuation">)</span> <span class="token comment">// '2021-07-10 00:00:00'</span>
+rdate<span class="token punctuation">.</span><span class="token function">quarter</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token string">'2021-1-1'</span><span class="token punctuation">)</span> <span class="token comment">// '2021-10-10 00:00:00'</span>
+
+rdate<span class="token punctuation">.</span><span class="token function">quarter</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'2021-2-1'</span><span class="token punctuation">)</span> <span class="token comment">// '2021-02-10 00:00:00'</span>
+rdate<span class="token punctuation">.</span><span class="token function">quarter</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token string">'2021-2-1'</span><span class="token punctuation">)</span> <span class="token comment">// '2021-05-10 00:00:00'</span>
+rdate<span class="token punctuation">.</span><span class="token function">quarter</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token string">'2021-2-1'</span><span class="token punctuation">)</span> <span class="token comment">// '2021-08-10 00:00:00'</span>
+rdate<span class="token punctuation">.</span><span class="token function">quarter</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token string">'2021-2-1'</span><span class="token punctuation">)</span> <span class="token comment">// '2021-11-10 00:00:00'</span>
+
+rdate<span class="token punctuation">.</span><span class="token function">quarter</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'2021-3-1'</span><span class="token punctuation">)</span> <span class="token comment">// '2021-03-10 00:00:00'</span>
+rdate<span class="token punctuation">.</span><span class="token function">quarter</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token string">'2021-3-1'</span><span class="token punctuation">)</span> <span class="token comment">// '2021-06-10 00:00:00'</span>
+rdate<span class="token punctuation">.</span><span class="token function">quarter</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token string">'2021-3-1'</span><span class="token punctuation">)</span> <span class="token comment">// '2021-09-10 00:00:00'</span>
+rdate<span class="token punctuation">.</span><span class="token function">quarter</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token string">'2021-3-1'</span><span class="token punctuation">)</span> <span class="token comment">// '2021-12-10 00:00:00'</span>
+
+rdate<span class="token punctuation">.</span><span class="token function">quarter</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'2021-4-1'</span><span class="token punctuation">)</span> <span class="token comment">// '2021-01-10 00:00:00'</span>
+rdate<span class="token punctuation">.</span><span class="token function">quarter</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token string">'2021-4-1'</span><span class="token punctuation">)</span> <span class="token comment">// '2021-04-10 00:00:00'</span>
+rdate<span class="token punctuation">.</span><span class="token function">quarter</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token string">'2021-4-1'</span><span class="token punctuation">)</span> <span class="token comment">// '2021-07-10 00:00:00'</span>
+rdate<span class="token punctuation">.</span><span class="token function">quarter</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token string">'2021-4-1'</span><span class="token punctuation">)</span> <span class="token comment">// '2021-10-10 00:00:00'</span>
+</code></pre></div><h2 id="设置"><a href="#设置" class="header-anchor">#</a> 设置</h2> <p>unit 作为第一个参数，value 作为第二个参数，返回一个字符串日期。</p> <p>语法：</p> <div class="language-js extra-class"><pre class="language-js"><code>rdate<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>unit<span class="token punctuation">,</span> value<span class="token punctuation">)</span>
+</code></pre></div><p>单位不区分大小写，支持复数和缩写形式。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 什么都不传，返回格式化后的当前时间 格式：YYYY-MM-DD HH:mm:ss</span>
+rdate<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment">// 设置当前时间年份为 2025</span>
+rdate<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">'year'</span><span class="token punctuation">,</span> <span class="token number">2025</span><span class="token punctuation">)</span>
+
+<span class="token comment">// 设置 '1990-2-28 23:59:59' 的年份值为 2025</span>
+rdate<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">'year'</span><span class="token punctuation">,</span> <span class="token number">2025</span><span class="token punctuation">,</span> <span class="token string">'1990-2-28 23:59:59'</span><span class="token punctuation">)</span> <span class="token comment">// &quot;2025-02-28 23:59:59&quot;</span>
+
+<span class="token comment">// 设置当前时间月份为 12</span>
+rdate<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">'month'</span><span class="token punctuation">,</span> <span class="token number">11</span><span class="token punctuation">)</span>
+
+<span class="token comment">// 设置 '1990-2-28 23:59:59' 的月份为 12</span>
+rdate<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">'month'</span><span class="token punctuation">,</span> <span class="token number">11</span><span class="token punctuation">,</span> <span class="token string">'1990-2-28 23:59:59'</span><span class="token punctuation">)</span> <span class="token comment">// &quot;2025-12-28 23:59:59&quot;</span>
+</code></pre></div><div class="custom-block warning"><p class="custom-block-title">注意</p> <p>月份的索引为 0，因此 设置 1 月时则实际设置 值为 0</p></div> <p>所有可用单位列表</p> <table><thead><tr><th style="text-align:left;">单位</th> <th style="text-align:left;">缩写</th> <th style="text-align:left;">描述</th></tr></thead> <tbody><tr><td style="text-align:left;">year</td> <td style="text-align:left;">y</td> <td style="text-align:left;">年</td></tr> <tr><td style="text-align:left;">month</td> <td style="text-align:left;">M</td> <td style="text-align:left;">月份(0-11)</td></tr> <tr><td style="text-align:left;">date</td> <td style="text-align:left;">D</td> <td style="text-align:left;">日期</td></tr> <tr><td style="text-align:left;">hour</td> <td style="text-align:left;">h</td> <td style="text-align:left;">小时</td></tr> <tr><td style="text-align:left;">minute</td> <td style="text-align:left;">m</td> <td style="text-align:left;">分钟</td></tr> <tr><td style="text-align:left;">second</td> <td style="text-align:left;">s</td> <td style="text-align:left;">秒</td></tr> <tr><td style="text-align:left;">millisecond</td> <td style="text-align:left;">ms</td> <td style="text-align:left;">毫秒</td></tr> <tr><td style="text-align:left;">day</td> <td style="text-align:left;">d</td> <td style="text-align:left;">星期(星期日 0，星期六 6)</td></tr></tbody></table> <h2 id="获取"><a href="#获取" class="header-anchor">#</a> 获取</h2> <p>get 接受 unit 作为第一个参数，dt 作为第二个参数，返回一个字符串日期。</p> <p>语法：</p> <div class="language-js extra-class"><pre class="language-js"><code>rdate<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>unit<span class="token punctuation">,</span> dt<span class="token punctuation">)</span>
+</code></pre></div><p>单位不区分大小写，支持复数和缩写形式。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 获取当前时间的</span>
+
+rdate<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'year'</span><span class="token punctuation">)</span>
+rdate<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'month'</span><span class="token punctuation">)</span> <span class="token comment">// start 0</span>
+rdate<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'date'</span><span class="token punctuation">)</span>
+rdate<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'hour'</span><span class="token punctuation">)</span>
+rdate<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'minute'</span><span class="token punctuation">)</span>
+rdate<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'second'</span><span class="token punctuation">)</span>
+rdate<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'millisecond'</span><span class="token punctuation">)</span>
+rdate<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'day'</span><span class="token punctuation">)</span>
+
+<span class="token comment">// 获取指定日期的 年份</span>
+rdate<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'year'</span><span class="token punctuation">,</span><span class="token string">'1990-1-1'</span><span class="token punctuation">)</span>
+</code></pre></div><h2 id="最大值"><a href="#最大值" class="header-anchor">#</a> 最大值</h2> <p>获取 日期列表中的最大值</p> <p>语法：</p> <div class="language-js extra-class"><pre class="language-js"><code>rdate<span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>d1<span class="token punctuation">,</span> d2<span class="token punctuation">,</span> d3<span class="token punctuation">,</span> <span class="token operator">...</span>d<span class="token punctuation">)</span>
+</code></pre></div><p>示例：</p> <div class="language-js extra-class"><pre class="language-js"><code>rdate<span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span><span class="token string">'1990-1-1'</span><span class="token punctuation">,</span> <span class="token string">'2020-1-1'</span><span class="token punctuation">,</span> <span class="token string">'2025-2-3'</span><span class="token punctuation">)</span> <span class="token comment">//  &quot;2025-2-3&quot;</span>
+</code></pre></div><h2 id="最小值"><a href="#最小值" class="header-anchor">#</a> 最小值</h2> <p>获取 日期列表中的最小值</p> <p>语法：</p> <div class="language-js extra-class"><pre class="language-js"><code>rdate<span class="token punctuation">.</span><span class="token function">min</span><span class="token punctuation">(</span>d1<span class="token punctuation">,</span> d2<span class="token punctuation">,</span> d3<span class="token punctuation">,</span> <span class="token operator">...</span>d<span class="token punctuation">)</span>
+</code></pre></div><p>示例：</p> <div class="language-js extra-class"><pre class="language-js"><code>rdate<span class="token punctuation">.</span><span class="token function">min</span><span class="token punctuation">(</span><span class="token string">'1990-1-1'</span><span class="token punctuation">,</span> <span class="token string">'2020-1-1'</span><span class="token punctuation">,</span> <span class="token string">'2025-2-3'</span><span class="token punctuation">)</span> <span class="token comment">//  &quot;1990-1-1&quot;</span>
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/library/display.html" class="prev">
+        显示
+      </a></span> <span class="next"><a href="/library/manipulate.html">
+        操作
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><!----></div></div>
+    <script src="/assets/js/app.8b32a31c.js" defer></script><script src="/assets/js/2.06f51da2.js" defer></script><script src="/assets/js/12.5287c55a.js" defer></script>
+  </body>
+</html>
