@@ -51,9 +51,9 @@ const format = function (...args) {
                 case 'q':
                     return map.Q
                 case 'W':
-                    return week(dt, '周')
+                    return getWeek(dt, '周')
                 case 'w':
-                    return week(dt)
+                    return getWeek(dt)
                 default:
                     return match
             }
