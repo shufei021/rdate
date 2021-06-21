@@ -6,7 +6,7 @@ rdate.js 的 format 方法用于格式日期时间
 
 **语法：**
 
-`rdate.formt( dt?ft, ft?)`
+`rdate.formt( dt, ft )`
 
 **参数：**
 

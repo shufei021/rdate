@@ -1,4 +1,4 @@
-import rdate from './lib/rdate.js' //时间日期
+import rdate from './lib/index' //时间日期
 
 export default ({ router }) => {
     if (typeof window != 'undefined') {

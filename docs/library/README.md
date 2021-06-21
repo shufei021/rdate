@@ -17,13 +17,14 @@ var rdate = require('rdate')
 rdate.format()
 ```
 
+
 ## 浏览器
 
-下载项目引入 build 的 rdate.min.js
+下载项目引入 build 的 rdate.js
 
 ```html
-<script src="rdate.min.js"></script>
+<script src="rdate.js"></script>
 <script>
-    rdate.format()
+rdate.format()
 </script>
 ```
