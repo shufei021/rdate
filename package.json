@@ -1,9 +1,9 @@
 {
     "name": "rdatejs",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "description": "date-time ibrary ",
     "private": false,
-    "main": "./index.js",
+    "main": "./build/index.js",
     "dependencies": {
         "babel-core": "^6.26.3",
         "babel-loader": "^7.1.5",
