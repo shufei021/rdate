@@ -1,31 +1,138 @@
 <!DOCTYPE html>
 <html lang="en-US">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>操作 | Rdate.js</title>
-    <meta name="generator" content="VuePress 1.7.1">
-    <link rel="icon" href="/rdate/favicon.png">
-    <meta name="description" content="">
-    
-    <link rel="preload" href="/rdate/assets/css/0.styles.2a844c75.css" as="style"><link rel="preload" href="/rdate/assets/js/app.141c94c0.js" as="script"><link rel="preload" href="/rdate/assets/js/2.a6379367.js" as="script"><link rel="preload" href="/rdate/assets/js/10.470d61c3.js" as="script"><link rel="prefetch" href="/rdate/assets/js/11.c86a283e.js"><link rel="prefetch" href="/rdate/assets/js/12.58d705a2.js"><link rel="prefetch" href="/rdate/assets/js/13.a4afe598.js"><link rel="prefetch" href="/rdate/assets/js/3.a39021f5.js"><link rel="prefetch" href="/rdate/assets/js/4.967f2274.js"><link rel="prefetch" href="/rdate/assets/js/5.ee3bab33.js"><link rel="prefetch" href="/rdate/assets/js/6.a16f0351.js"><link rel="prefetch" href="/rdate/assets/js/7.861cb0a8.js"><link rel="prefetch" href="/rdate/assets/js/8.30552da1.js"><link rel="prefetch" href="/rdate/assets/js/9.e45a03a6.js">
-    <link rel="stylesheet" href="/rdate/assets/css/0.styles.2a844c75.css">
-  </head>
-  <body>
-    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/rdate/" class="home-link router-link-active"><img src="/rdate/time.png" alt="Rdate.js" class="logo"> <span class="site-name can-hide">Rdate.js</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/rdate/" class="nav-link">
-  首页
-</a></div><div class="nav-item"><a href="/rdate/library/" class="nav-link router-link-active">
-  文档
-</a></div><div class="nav-item"><a href="https://github.com/shufei021/rdate" target="_blank" rel="noopener noreferrer" class="nav-link external">
-  github
-  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/rdate/" class="nav-link">
-  首页
-</a></div><div class="nav-item"><a href="/rdate/library/" class="nav-link router-link-active">
-  文档
-</a></div><div class="nav-item"><a href="https://github.com/shufei021/rdate" target="_blank" rel="noopener noreferrer" class="nav-link external">
-  github
-  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span></span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/rdate/library/" aria-current="page" class="sidebar-link">安装</a></li><li><a href="/rdate/library/display.html" class="sidebar-link">显示</a></li><li><a href="/rdate/library/parse.html" class="sidebar-link">取值/赋值</a></li><li><a href="/rdate/library/manipulate.html" aria-current="page" class="active sidebar-link">操作</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/rdate/library/manipulate.html#加上" class="sidebar-link">加上</a></li><li class="sidebar-sub-header"><a href="/rdate/library/manipulate.html#减上" class="sidebar-link">减上</a></li><li class="sidebar-sub-header"><a href="/rdate/library/manipulate.html#开始时间" class="sidebar-link">开始时间</a></li><li class="sidebar-sub-header"><a href="/rdate/library/manipulate.html#结束时间" class="sidebar-link">结束时间</a></li></ul></li><li><a href="/rdate/library/query.html" class="sidebar-link">查询</a></li><li><a href="/rdate/library/other.html" class="sidebar-link">其它</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="操作"><a href="#操作" class="header-anchor">#</a> 操作</h1> <p>我们希望能够对日期时间进行操作</p> <h2 id="加上"><a href="#加上" class="header-anchor">#</a> 加上</h2> <p>对指定的时间进行加操作，返回操作后的日期</p> <p>语法：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token constant">R</span><span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>value<span class="token punctuation">,</span> unit<span class="token punctuation">,</span> dt<span class="token punctuation">,</span> ft<span class="token punctuation">)</span>
-</code></pre></div><p>单位不区分大小写，支持复数和缩写形式。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 当前日期 + 1 天</span>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <title>操作 | Rdate.js</title>
+        <meta name="generator" content="VuePress 1.7.1" />
+        <link rel="icon" href="/rdate/favicon.png" />
+        <meta name="description" content="" />
+
+        <link rel="preload" href="/rdate/assets/css/0.styles.2a844c75.css" as="style" />
+        <link rel="preload" href="/rdate/assets/js/app.141c94c0.js" as="script" />
+        <link rel="preload" href="/rdate/assets/js/2.a6379367.js" as="script" />
+        <link rel="preload" href="/rdate/assets/js/10.470d61c3.js" as="script" />
+        <link rel="prefetch" href="/rdate/assets/js/11.c86a283e.js" />
+        <link rel="prefetch" href="/rdate/assets/js/12.58d705a2.js" />
+        <link rel="prefetch" href="/rdate/assets/js/13.a4afe598.js" />
+        <link rel="prefetch" href="/rdate/assets/js/3.a39021f5.js" />
+        <link rel="prefetch" href="/rdate/assets/js/4.967f2274.js" />
+        <link rel="prefetch" href="/rdate/assets/js/5.ee3bab33.js" />
+        <link rel="prefetch" href="/rdate/assets/js/6.a16f0351.js" />
+        <link rel="prefetch" href="/rdate/assets/js/7.861cb0a8.js" />
+        <link rel="prefetch" href="/rdate/assets/js/8.30552da1.js" />
+        <link rel="prefetch" href="/rdate/assets/js/9.e45a03a6.js" />
+        <link rel="stylesheet" href="/rdate/assets/css/0.styles.2a844c75.css" />
+    </head>
+    <body>
+        <div id="app" data-server-rendered="true">
+            <div class="theme-container">
+                <header class="navbar">
+                    <div class="sidebar-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon">
+                            <path
+                                fill="currentColor"
+                                d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"
+                            ></path>
+                        </svg>
+                    </div>
+                    <a href="/rdate/" class="home-link router-link-active"><img src="/rdate/time.png" alt="Rdate.js" class="logo" /> <span class="site-name can-hide">Rdate.js</span></a>
+                    <div class="links">
+                        <div class="search-box">
+                            <input aria-label="Search" autocomplete="off" spellcheck="false" value="" />
+                            <!---->
+                        </div>
+                        <nav class="nav-links can-hide">
+                            <div class="nav-item"><a href="/rdate/" class="nav-link"> 首页 </a></div>
+                            <div class="nav-item"><a href="/rdate/library/" class="nav-link router-link-active"> 文档 </a></div>
+                            <div class="nav-item">
+                                <a href="https://github.com/shufei021/rdate" target="_blank" rel="noopener noreferrer" class="nav-link external">
+                                    github
+                                    <span
+                                        ><svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            aria-hidden="true"
+                                            focusable="false"
+                                            x="0px"
+                                            y="0px"
+                                            viewBox="0 0 100 100"
+                                            width="15"
+                                            height="15"
+                                            class="icon outbound"
+                                        >
+                                            <path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path>
+                                            <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon>
+                                        </svg>
+                                        <span class="sr-only">(opens new window)</span></span
+                                    ></a
+                                >
+                            </div>
+                            <!---->
+                        </nav>
+                    </div>
+                </header>
+                <div class="sidebar-mask"></div>
+                <aside class="sidebar">
+                    <nav class="nav-links">
+                        <div class="nav-item"><a href="/rdate/" class="nav-link"> 首页 </a></div>
+                        <div class="nav-item"><a href="/rdate/library/" class="nav-link router-link-active"> 文档 </a></div>
+                        <div class="nav-item">
+                            <a href="https://github.com/shufei021/rdate" target="_blank" rel="noopener noreferrer" class="nav-link external">
+                                github
+                                <span
+                                    ><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound">
+                                        <path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path>
+                                        <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon>
+                                    </svg>
+                                    <span class="sr-only">(opens new window)</span></span
+                                ></a
+                            >
+                        </div>
+                        <!---->
+                    </nav>
+                    <ul class="sidebar-links">
+                        <li>
+                            <section class="sidebar-group depth-0">
+                                <p class="sidebar-heading open">
+                                    <span></span>
+                                    <!---->
+                                </p>
+                                <ul class="sidebar-links sidebar-group-items">
+                                    <li><a href="/rdate/library/" aria-current="page" class="sidebar-link">安装</a></li>
+                                    <li><a href="/rdate/library/display.html" class="sidebar-link">显示</a></li>
+                                    <li><a href="/rdate/library/parse.html" class="sidebar-link">取值/赋值</a></li>
+                                    <li>
+                                        <a href="/rdate/library/manipulate.html" aria-current="page" class="active sidebar-link">操作</a>
+                                        <ul class="sidebar-sub-headers">
+                                            <li class="sidebar-sub-header"><a href="/rdate/library/manipulate.html#加上" class="sidebar-link">加上</a></li>
+                                            <li class="sidebar-sub-header"><a href="/rdate/library/manipulate.html#减上" class="sidebar-link">减上</a></li>
+                                            <li class="sidebar-sub-header"><a href="/rdate/library/manipulate.html#开始时间" class="sidebar-link">开始时间</a></li>
+                                            <li class="sidebar-sub-header"><a href="/rdate/library/manipulate.html#结束时间" class="sidebar-link">结束时间</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="/rdate/library/query.html" class="sidebar-link">查询</a></li>
+                                    <li><a href="/rdate/library/other.html" class="sidebar-link">其它</a></li>
+                                </ul>
+                            </section>
+                        </li>
+                    </ul>
+                </aside>
+                <main class="page">
+                    <div class="theme-default-content content__default">
+                        <h1 id="操作"><a href="#操作" class="header-anchor">#</a> 操作</h1>
+                        <p>我们希望能够对日期时间进行操作</p>
+                        <h2 id="加上"><a href="#加上" class="header-anchor">#</a> 加上</h2>
+                        <p>对指定的时间进行加操作，返回操作后的日期</p>
+                        <p>语法：</p>
+                        <div class="language-js extra-class">
+                            <pre
+                                class="language-js"
+                            ><code><span class="token constant">R</span><span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>value<span class="token punctuation">,</span> unit<span class="token punctuation">,</span> dt<span class="token punctuation">,</span> ft<span class="token punctuation">)</span>
+</code></pre>
+                        </div>
+                        <p>单位不区分大小写，支持复数和缩写形式。</p>
+                        <div class="language-js extra-class">
+                            <pre class="language-js"><code><span class="token comment">// 当前日期 + 1 天</span>
 rdate<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'day'</span><span class="token punctuation">)</span>
 
 <span class="token comment">// 当前日期 + 1 年</span>
@@ -50,18 +157,180 @@ rdate<span class="token punctuation">.</span><span class="token function">add</s
 
 <span class="token comment">// 指定 '2021-1-1' 日期 + 1 个季度，1个季度 3个月，当前日期后延3个月</span>
 rdate<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'quarter'</span><span class="token punctuation">,</span> <span class="token string">'2021-1-1'</span><span class="token punctuation">)</span> <span class="token comment">//&quot;2021-04-01 00:00:00&quot;</span>
-</code></pre></div><p>所有可用单位列表</p> <table><thead><tr><th style="text-align:left;">单位</th> <th style="text-align:left;">缩写</th> <th style="text-align:left;">描述</th></tr></thead> <tbody><tr><td style="text-align:left;">week</td> <td style="text-align:left;">w</td> <td style="text-align:left;">周</td></tr> <tr><td style="text-align:left;">day</td> <td style="text-align:left;">d</td> <td style="text-align:left;">星期(星期日 0，星期六 6)</td></tr> <tr><td style="text-align:left;">month</td> <td style="text-align:left;">M</td> <td style="text-align:left;">月份(0-11)</td></tr> <tr><td style="text-align:left;">quarter</td> <td style="text-align:left;">Q</td> <td style="text-align:left;">依赖<code>QuarterOfYear</code>插件</td></tr> <tr><td style="text-align:left;">year</td> <td style="text-align:left;">y</td> <td style="text-align:left;">年</td></tr> <tr><td style="text-align:left;">hour</td> <td style="text-align:left;">h</td> <td style="text-align:left;">小时</td></tr> <tr><td style="text-align:left;">minute</td> <td style="text-align:left;">m</td> <td style="text-align:left;">分钟</td></tr> <tr><td style="text-align:left;">second</td> <td style="text-align:left;">s</td> <td style="text-align:left;">秒</td></tr> <tr><td style="text-align:left;">millisecond</td> <td style="text-align:left;">ms</td> <td style="text-align:left;">毫秒</td></tr></tbody></table> <h2 id="减上"><a href="#减上" class="header-anchor">#</a> 减上</h2> <p>对指定的时间进行减操作，返回操作后的日期</p> <p>语法：</p> <div class="language-js extra-class"><pre class="language-js"><code>rdate<span class="token punctuation">.</span><span class="token function">subtract</span><span class="token punctuation">(</span>value<span class="token punctuation">,</span> unit<span class="token punctuation">,</span> dt<span class="token punctuation">,</span> ft<span class="token punctuation">)</span>
-</code></pre></div><p>单位不区分大小写，支持复数和缩写形式。</p> <div class="language-js extra-class"><pre class="language-js"><code>rdate<span class="token punctuation">.</span><span class="token function">subtract</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'quarter'</span><span class="token punctuation">,</span> <span class="token string">'2021-6-1'</span><span class="token punctuation">)</span> <span class="token comment">// &quot;2021-03-01 00:00:00&quot;</span>
-</code></pre></div><h2 id="开始时间"><a href="#开始时间" class="header-anchor">#</a> 开始时间</h2> <p>获取 一个 日期时间的 开始时间</p> <p>语法：</p> <div class="language-js extra-class"><pre class="language-js"><code>rdate<span class="token punctuation">.</span><span class="token function">startOf</span><span class="token punctuation">(</span>unit<span class="token punctuation">,</span> dt<span class="token punctuation">,</span> ft<span class="token punctuation">)</span>
-</code></pre></div><p>单位不区分大小写，支持复数和缩写形式。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 获取 当前日期 的年开始日期</span>
+</code></pre>
+                        </div>
+                        <p>所有可用单位列表</p>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th style="text-align: left">单位</th>
+                                    <th style="text-align: left">缩写</th>
+                                    <th style="text-align: left">描述</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="text-align: left">week</td>
+                                    <td style="text-align: left">w</td>
+                                    <td style="text-align: left">周</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left">day</td>
+                                    <td style="text-align: left">d</td>
+                                    <td style="text-align: left">星期(星期日 0，星期六 6)</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left">month</td>
+                                    <td style="text-align: left">M</td>
+                                    <td style="text-align: left">月份(0-11)</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left">quarter</td>
+                                    <td style="text-align: left">Q</td>
+                                    <td style="text-align: left">依赖<code>QuarterOfYear</code>插件</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left">year</td>
+                                    <td style="text-align: left">y</td>
+                                    <td style="text-align: left">年</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left">hour</td>
+                                    <td style="text-align: left">h</td>
+                                    <td style="text-align: left">小时</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left">minute</td>
+                                    <td style="text-align: left">m</td>
+                                    <td style="text-align: left">分钟</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left">second</td>
+                                    <td style="text-align: left">s</td>
+                                    <td style="text-align: left">秒</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left">millisecond</td>
+                                    <td style="text-align: left">ms</td>
+                                    <td style="text-align: left">毫秒</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h2 id="减上"><a href="#减上" class="header-anchor">#</a> 减上</h2>
+                        <p>对指定的时间进行减操作，返回操作后的日期</p>
+                        <p>语法：</p>
+                        <div class="language-js extra-class">
+                            <pre
+                                class="language-js"
+                            ><code>rdate<span class="token punctuation">.</span><span class="token function">subtract</span><span class="token punctuation">(</span>value<span class="token punctuation">,</span> unit<span class="token punctuation">,</span> dt<span class="token punctuation">,</span> ft<span class="token punctuation">)</span>
+</code></pre>
+                        </div>
+                        <p>单位不区分大小写，支持复数和缩写形式。</p>
+                        <div class="language-js extra-class">
+                            <pre
+                                class="language-js"
+                            ><code>rdate<span class="token punctuation">.</span><span class="token function">subtract</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'quarter'</span><span class="token punctuation">,</span> <span class="token string">'2021-6-1'</span><span class="token punctuation">)</span> <span class="token comment">// &quot;2021-03-01 00:00:00&quot;</span>
+</code></pre>
+                        </div>
+                        <h2 id="开始时间"><a href="#开始时间" class="header-anchor">#</a> 开始时间</h2>
+                        <p>获取 一个 日期时间的 开始时间</p>
+                        <p>语法：</p>
+                        <div class="language-js extra-class">
+                            <pre
+                                class="language-js"
+                            ><code>rdate<span class="token punctuation">.</span><span class="token function">startOf</span><span class="token punctuation">(</span>unit<span class="token punctuation">,</span> dt<span class="token punctuation">,</span> ft<span class="token punctuation">)</span>
+</code></pre>
+                        </div>
+                        <p>单位不区分大小写，支持复数和缩写形式。</p>
+                        <div class="language-js extra-class">
+                            <pre class="language-js"><code><span class="token comment">// 获取 当前日期 的年开始日期</span>
 rdate<span class="token punctuation">.</span><span class="token function">startOf</span><span class="token punctuation">(</span><span class="token string">'year'</span><span class="token punctuation">)</span>
 
 
 <span class="token comment">// 获取指定日期所属的 月开始日期</span>
 rdate<span class="token punctuation">.</span><span class="token function">startOf</span><span class="token punctuation">(</span><span class="token string">'month'</span><span class="token punctuation">,</span><span class="token string">'2022-3-15'</span><span class="token punctuation">)</span><span class="token comment">// &quot;2022-03-01 00:00:00&quot;</span>
 rdate<span class="token punctuation">.</span><span class="token function">startOf</span><span class="token punctuation">(</span><span class="token string">'month'</span><span class="token punctuation">,</span><span class="token string">'2022-3-15'</span>，<span class="token string">'YYYY-MM-DD'</span><span class="token punctuation">)</span><span class="token comment">// &quot;2022-03-01&quot;</span>
-</code></pre></div><p>所有可用单位列表</p> <table><thead><tr><th style="text-align:left;">单位</th> <th style="text-align:left;">缩写</th> <th style="text-align:left;">描述</th></tr></thead> <tbody><tr><td style="text-align:left;">date</td> <td style="text-align:left;">D</td> <td style="text-align:left;">天 00:00</td></tr> <tr><td style="text-align:left;">day</td> <td style="text-align:left;">d</td> <td style="text-align:left;">星期 00:00</td></tr> <tr><td style="text-align:left;">month</td> <td style="text-align:left;">M</td> <td style="text-align:left;">月第一天 00:00</td></tr> <tr><td style="text-align:left;">quarter</td> <td style="text-align:left;">Q</td> <td style="text-align:left;">季度第一个月第一天 00:00</td></tr> <tr><td style="text-align:left;">year</td> <td style="text-align:left;">y</td> <td style="text-align:left;">1 月 1 日 00 点</td></tr> <tr><td style="text-align:left;">week</td> <td style="text-align:left;">w</td> <td style="text-align:left;">周第一天 00:00</td></tr> <tr><td style="text-align:left;">hour</td> <td style="text-align:left;">h</td> <td style="text-align:left;">00:00:00</td></tr> <tr><td style="text-align:left;">minute</td> <td style="text-align:left;">m</td> <td style="text-align:left;">00:00</td></tr> <tr><td style="text-align:left;">second</td> <td style="text-align:left;">s</td> <td style="text-align:left;">00</td></tr> <tr><td style="text-align:left;">millisecond</td> <td style="text-align:left;">ms</td> <td style="text-align:left;">0</td></tr> <tr><td style="text-align:left;">week</td> <td style="text-align:left;">w</td> <td style="text-align:left;">周第一天 00:00</td></tr></tbody></table> <h2 id="结束时间"><a href="#结束时间" class="header-anchor">#</a> 结束时间</h2> <p>获取 一个 日期时间的 结束时间</p> <p>语法：</p> <div class="language-js extra-class"><pre class="language-js"><code>rdate<span class="token punctuation">.</span><span class="token function">endOf</span><span class="token punctuation">(</span>unit<span class="token punctuation">,</span> dt<span class="token punctuation">,</span> ft<span class="token punctuation">)</span>
-</code></pre></div><p>单位不区分大小写，支持复数和缩写形式</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 获取今年的最后一天日期</span>
+</code></pre>
+                        </div>
+                        <p>所有可用单位列表</p>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th style="text-align: left">单位</th>
+                                    <th style="text-align: left">缩写</th>
+                                    <th style="text-align: left">描述</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="text-align: left">date</td>
+                                    <td style="text-align: left">D</td>
+                                    <td style="text-align: left">天 00:00</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left">day</td>
+                                    <td style="text-align: left">d</td>
+                                    <td style="text-align: left">星期 00:00</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left">month</td>
+                                    <td style="text-align: left">M</td>
+                                    <td style="text-align: left">月第一天 00:00</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left">quarter</td>
+                                    <td style="text-align: left">Q</td>
+                                    <td style="text-align: left">季度第一个月第一天 00:00</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left">year</td>
+                                    <td style="text-align: left">y</td>
+                                    <td style="text-align: left">1 月 1 日 00 点</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left">week</td>
+                                    <td style="text-align: left">w</td>
+                                    <td style="text-align: left">周第一天 00:00</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left">hour</td>
+                                    <td style="text-align: left">h</td>
+                                    <td style="text-align: left">00:00:00</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left">minute</td>
+                                    <td style="text-align: left">m</td>
+                                    <td style="text-align: left">00:00</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left">second</td>
+                                    <td style="text-align: left">s</td>
+                                    <td style="text-align: left">00</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left">millisecond</td>
+                                    <td style="text-align: left">ms</td>
+                                    <td style="text-align: left">0</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left">week</td>
+                                    <td style="text-align: left">w</td>
+                                    <td style="text-align: left">周第一天 00:00</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h2 id="结束时间"><a href="#结束时间" class="header-anchor">#</a> 结束时间</h2>
+                        <p>获取 一个 日期时间的 结束时间</p>
+                        <p>语法：</p>
+                        <div class="language-js extra-class">
+                            <pre
+                                class="language-js"
+                            ><code>rdate<span class="token punctuation">.</span><span class="token function">endOf</span><span class="token punctuation">(</span>unit<span class="token punctuation">,</span> dt<span class="token punctuation">,</span> ft<span class="token punctuation">)</span>
+</code></pre>
+                        </div>
+                        <p>单位不区分大小写，支持复数和缩写形式</p>
+                        <div class="language-js extra-class">
+                            <pre class="language-js"><code><span class="token comment">// 获取今年的最后一天日期</span>
 rdate<span class="token punctuation">.</span><span class="token function">endOf</span><span class="token punctuation">(</span><span class="token string">'year'</span><span class="token punctuation">)</span>
 
 <span class="token comment">// 获取本月的最后一天日期</span>
@@ -101,15 +370,31 @@ rdate<span class="token punctuation">.</span><span class="token function">endOf<
 rdate<span class="token punctuation">.</span><span class="token function">endOf</span><span class="token punctuation">(</span><span class="token string">'quarter'</span><span class="token punctuation">,</span> <span class="token string">'2021-9-14'</span><span class="token punctuation">)</span> <span class="token comment">// &quot;2021-09-30 23:59:59&quot;</span>
 
 rdate<span class="token punctuation">.</span><span class="token function">endOf</span><span class="token punctuation">(</span><span class="token string">'quarter'</span><span class="token punctuation">,</span> <span class="token string">'2021-10-14'</span><span class="token punctuation">)</span> <span class="token comment">// &quot;2021-12-31 23:59:59&quot;</span>
-</code></pre></div></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">6/20/2021, 3:23:24 PM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
-      ←
-      <a href="/rdate/library/parse.html" class="prev">
-        取值/赋值
-      </a></span> <span class="next"><a href="/rdate/library/query.html">
-        查询
-      </a>
-      →
-    </span></p></div> </main></div><div class="global-ui"><!----></div></div>
-    <script src="/rdate/assets/js/app.141c94c0.js" defer></script><script src="/rdate/assets/js/2.a6379367.js" defer></script><script src="/rdate/assets/js/10.470d61c3.js" defer></script>
-  </body>
+</code></pre>
+                        </div>
+                    </div>
+                    <footer class="page-edit">
+                        <!---->
+                        <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">6/20/2021, 3:23:24 PM</span></div>
+                    </footer>
+                    <div class="page-nav">
+                        <p class="inner">
+                            <span class="prev">
+                                ←
+                                <a href="/rdate/library/parse.html" class="prev"> 取值/赋值 </a></span
+                            >
+                            <span class="next"
+                                ><a href="/rdate/library/query.html"> 查询 </a>
+                                →
+                            </span>
+                        </p>
+                    </div>
+                </main>
+            </div>
+            <div class="global-ui"><!----></div>
+        </div>
+        <script src="/rdate/assets/js/app.141c94c0.js" defer></script>
+        <script src="/rdate/assets/js/2.a6379367.js" defer></script>
+        <script src="/rdate/assets/js/10.470d61c3.js" defer></script>
+    </body>
 </html>
