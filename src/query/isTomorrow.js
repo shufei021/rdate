@@ -4,10 +4,8 @@ import format from '../display/format'
  * @param {Date | String | Number} dt：
  * @return {Boolean}
  */
-const isYesterday = function (dt = new Date()) {
-    const ft = 'YYYY-MM-DD'
-    dt = new Date(dt)
-    dt.setDate(dt.getDate() - 1)
-    return format(dt, ft) === format(new Date(), ft)
+
+const isTomorrow = function (dt = new Date()) {
+    return ['getFullYear', 'getMonth', 'getDate'].every(i => new Date(+new Date() + 86400000)[i]() === new Date(dt)[i]())
 }
-export default isYesterday
+export default isTomorrow
