@@ -6,8 +6,8 @@ import subtract from '../manipulate/subtract'
  * @return {Boolean}
  */
 const isYesterday = function (dt) {
-    const ft = 'YYYY-MM-DD'
-    const d = subtract(1, 'day')
+    const ft = 'YYYY/MM/DD'
+    const d = subtract(1, 'day',new Date(),ft)
     return format(new Date(d), ft) === format(new Date(dt), ft)
 }
 export default isYesterday

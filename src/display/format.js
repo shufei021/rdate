@@ -61,7 +61,6 @@ const format = function (...args) {
         return result
     } catch (e) {
         console.log(e)
-
         return new Date('') // Invalid Date
     }
 }
