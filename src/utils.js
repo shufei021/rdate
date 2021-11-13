@@ -1,7 +1,7 @@
 /**
  *
  * @description 辅助函数
- *
+ * 
  */
 const compatibleDt = dt => (typeof dt == 'string' && dt.includes('-') && !dt.includes('T') ? dt.replace(/-/g, '/') : dt)
 export const FORMAT_DEFAULT = 'YYYY-MM-DD HH:mm:ss' // 默认格式
@@ -50,3 +50,4 @@ export const padStart = (string, length, pad) => {
     if (!s || s.length >= length) return string
     return `${Array(length + 1 - s.length).join(pad)}${string}`
 }
+
