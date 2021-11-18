@@ -1,6 +1,6 @@
 {
     "name": "rdatejs",
-    "version": "0.0.4",
+    "version": "0.0.6",
     "description": "date-time ibrary ",
     "private": false,
     "main": "./build/index.js",
@@ -27,7 +27,7 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
     },
-    "keywords": ["date","time","date-time"],
+    "keywords": ["date","time","date-time","rdate","datejs"],
     "author": "shufei",
     "license": "ISC",
     "homepage": "https://shufei021.github.io/rdate/",

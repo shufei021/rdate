@@ -1,13 +1,8 @@
-import format from '../display/format'
-import subtract from '../manipulate/subtract'
+import {compatibleDt} from "../utils"
 /**
  * @description: 传入日期是否就是当天
  * @param {Date | String | Number} dt：
  * @return {Boolean}
  */
-const isYesterday = function (dt) {
-    const ft = 'YYYY/MM/DD'
-    const d = subtract(1, 'day',new Date(),ft)
-    return format(new Date(d), ft) === format(new Date(dt), ft)
-}
+const isYesterday =(dt = new Date())=>['getFullYear', 'getMonth', 'getDate'].every(i => new Date(new Date() - 24*60*60*1000)[i]() === new Date(compatibleDt(dt))[i]())
 export default isYesterday

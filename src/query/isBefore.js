@@ -6,6 +6,6 @@ import { format } from '../display'
  * @return {Boolean}
  */
 const isBefore = function (dt, check = new Date()) {
-    return new Date(check) < new Date(format(dt))
+    return new Date(format(check,'YYYY/MM/DD')) < new Date(format(dt,'YYYY/MM/DD'))
 }
 export default isBefore

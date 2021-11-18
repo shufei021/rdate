@@ -3,7 +3,7 @@
  * @description 辅助函数
  * 
  */
-const compatibleDt = dt => (typeof dt == 'string' && dt.includes('-') && !dt.includes('T') ? dt.replace(/-/g, '/') : dt)
+export const compatibleDt = dt => (typeof dt === 'string' && dt.includes('-') && !dt.includes('T') ? dt.replace(/-/g, '/') : dt)
 export const FORMAT_DEFAULT = 'YYYY-MM-DD HH:mm:ss' // 默认格式
 export const INVALID_DATE_STRING = 'Invalid Date' // 无效日期
 export const isUndefined = s => s === undefined
@@ -27,7 +27,7 @@ export const _initArgs = function (args, format = FORMAT_DEFAULT) {
         ft = format
     if (len == 1) {
         // 参数长度为1个时，检测传入的值的两种情况，不是格式就是时间，传入参数请按规则
-        if (isNaN(new Date(a).valueOf())) {
+        if (isNaN(new Date(compatibleDt(a)).valueOf())) {
             ft = a
         } else {
             dt = new Date(compatibleDt(a))
