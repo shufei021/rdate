@@ -7,6 +7,10 @@ import isBefore from './isBefore'
  */
 
 const isAfter = function (dt, check = new Date()) {
-    return !isBefore(dt, check)
+    if(+new Date(dt) === +new Date(check)){
+        return false
+    }else{
+        return  !isBefore(dt, check)
+    }
 }
 export default isAfter
